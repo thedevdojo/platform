@@ -8,7 +8,5 @@ name('inbox');
 ?>
 
 <x-layouts.app title="Inbox" heading="Inbox">
-    <div class="mx-auto max-w-3xl px-6 py-10">
-        <p class="text-muted">Inbox…</p>
-    </div>
+    <livewire:inbox />
 </x-layouts.app>

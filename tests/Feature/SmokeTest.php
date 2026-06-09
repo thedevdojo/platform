@@ -4,9 +4,17 @@ use App\Models\Label;
 use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
+use Devdojo\Blog\Models\Category;
+use Devdojo\Blog\Models\Post;
+use Devdojo\Changelog\Models\Changelog;
+use Spatie\Permission\Models\Role;
 
 beforeEach(function () {
+    Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);
+
     $this->user = User::factory()->create(['username' => 'demo']);
+    $this->user->assignRole('admin');
+
     $this->project = Project::factory()->create(['owner_id' => $this->user->id]);
     $this->project->members()->attach($this->user->id, ['role' => 'owner']);
 
@@ -15,6 +23,20 @@ beforeEach(function () {
         'project_id' => $this->project->id,
         'assignee_id' => $this->user->id,
     ])->each(fn (Task $t) => $t->labels()->attach($labels->random()->id));
+
+    $category = Category::create(['name' => 'Product', 'slug' => 'product', 'order' => 1]);
+    $this->post = Post::create([
+        'author_id' => $this->user->id,
+        'category_id' => $category->id,
+        'title' => 'Hello World',
+        'slug' => 'hello-world',
+        'excerpt' => 'A first post.',
+        'body' => '<p>Hello.</p>',
+        'status' => 'PUBLISHED',
+        'featured' => true,
+    ]);
+
+    Changelog::create(['title' => 'v1.0', 'description' => 'First release', 'body' => '<p>Shipped.</p>']);
 });
 
 it('shows the marketing landing to guests', function () {
@@ -25,9 +47,7 @@ it('shows the marketing landing to guests', function () {
 });
 
 it('renders the core authenticated experience', function (string $route) {
-    $this->actingAs($this->user)
-        ->get($route)
-        ->assertSuccessful();
+    $this->actingAs($this->user)->get($route)->assertSuccessful();
 })->with(function () {
     return [
         'dashboard' => fn () => route('dashboard'),
@@ -35,9 +55,28 @@ it('renders the core authenticated experience', function (string $route) {
         'project board' => fn () => route('projects.show', ['project' => $this->project->id]),
         'inbox' => fn () => route('inbox'),
         'settings account' => fn () => route('settings.account'),
+        'settings security' => fn () => route('settings.security'),
         'settings notifications' => fn () => route('settings.notifications'),
         'settings billing' => fn () => route('settings.billing'),
+        'settings team' => fn () => route('settings.team'),
     ];
+});
+
+it('renders the admin area for admins', function (string $route) {
+    $this->actingAs($this->user)->get($route)->assertSuccessful();
+})->with(function () {
+    return [
+        'admin' => fn () => route('admin'),
+        'admin posts' => fn () => route('admin.posts'),
+        'admin changelog' => fn () => route('admin.changelog'),
+        'admin plans' => fn () => route('admin.plans'),
+    ];
+});
+
+it('forbids the admin area for non-admins', function () {
+    $plain = User::factory()->create();
+
+    $this->actingAs($plain)->get(route('admin.posts'))->assertForbidden();
 });
 
 it('renders public content pages', function () {
@@ -47,6 +86,7 @@ it('renders public content pages', function () {
         route('pricing'),
         route('changelog.index'),
         route('blog.index'),
+        route('blog.show', ['post' => $this->post->slug]),
         route('profile.show', ['username' => $this->user->username]),
     ] as $url) {
         $this->get($url)->assertSuccessful();

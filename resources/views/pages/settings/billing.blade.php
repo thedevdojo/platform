@@ -7,6 +7,11 @@ name('settings.billing');
 
 ?>
 
-<x-layouts.app title="Billing" heading="Settings">
-    <div class="mx-auto max-w-3xl px-6 py-10"><p class="text-muted">Billing…</p></div>
+<x-layouts.app title="Billing · Settings" heading="Settings">
+    <div class="mx-auto max-w-4xl px-5 py-8 sm:px-8">
+        <x-app.settings-tabs />
+        <div class="mt-8">
+            <livewire:settings.billing />
+        </div>
+    </div>
 </x-layouts.app>

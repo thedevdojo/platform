@@ -7,6 +7,11 @@ name('settings.account');
 
 ?>
 
-<x-layouts.app title="Settings" heading="Settings">
-    <div class="mx-auto max-w-3xl px-6 py-10"><p class="text-muted">Account settings…</p></div>
+<x-layouts.app title="Account · Settings" heading="Settings">
+    <div class="mx-auto max-w-4xl px-5 py-8 sm:px-8">
+        <x-app.settings-tabs />
+        <div class="mt-8">
+            <livewire:settings.account />
+        </div>
+    </div>
 </x-layouts.app>
