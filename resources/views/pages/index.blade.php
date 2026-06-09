@@ -6,69 +6,89 @@ name('home');
 
 ?>
 
-<x-layouts.marketing>
+<x-layouts.marketing :hero-nav="true">
 
     {{-- ===================== HERO ===================== --}}
-    <section class="relative overflow-hidden">
-        {{-- atmosphere: dot grid fading out + jade glow --}}
-        <div class="pointer-events-none absolute inset-0 -z-10">
-            <div class="absolute inset-0 bg-dotgrid [mask-image:radial-gradient(ellipse_70%_55%_at_50%_0%,black_30%,transparent_70%)] opacity-60"></div>
-            <div class="absolute left-1/2 top-[-220px] h-[520px] w-[820px] -translate-x-1/2 rounded-full opacity-40 blur-[120px] [background-image:radial-gradient(closest-side,rgba(25,157,118,0.45),transparent)]"></div>
-        </div>
-
-        <div class="relative mx-auto max-w-6xl px-5 pt-20 pb-16 text-center sm:px-8">
-            <div class="stagger flex flex-col items-center">
-                <a href="{{ route('changelog.index') }}" wire:navigate
-                   class="group inline-flex items-center gap-2 rounded-full border border-line-strong bg-surface/70 px-3 py-1 text-[12.5px] text-muted shadow-soft backdrop-blur-sm transition-colors hover:text-fg">
-                    <span class="inline-flex items-center gap-1.5 font-medium text-accent">
-                        <span class="size-1.5 rounded-full bg-accent animate-pulse-dot"></span> New
-                    </span>
-                    SLA targets, CSAT surveys &amp; saved replies
-                    <x-icon name="arrow-right" class="size-3.5 transition-transform group-hover:translate-x-0.5" />
-                </a>
-
-                <h1 class="mt-8 max-w-3xl text-balance font-display text-5xl font-semibold leading-[1.04] tracking-tight text-fg sm:text-6xl lg:text-[72px]">
-                    Customer support without the <span class="relative inline-block text-accent">chaos<svg class="absolute -bottom-1.5 left-0 w-full" viewBox="0 0 120 8" fill="none" preserveAspectRatio="none"><path d="M2 6C20 2 50 1.5 118 4.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" class="text-accent/40"/></svg></span>
-                </h1>
-
-                <p class="mt-7 max-w-xl text-balance text-lg text-muted">
-                    Deskly is the calm, fast help desk for teams who answer like humans and measure like operators. One inbox, clear ownership, honest metrics.
-                </p>
-
-                <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
-                    <a href="{{ route('login') }}" class="btn btn-primary btn-lg">
-                        Start for free <x-icon name="arrow-right" class="size-4" />
-                    </a>
-                    <a href="{{ route('login') }}" class="btn btn-secondary btn-lg">
-                        Live demo
-                    </a>
-                </div>
-
-                <div class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[13px] text-subtle">
-                    <span class="inline-flex items-center gap-1.5">
-                        <x-icon name="credit-card" class="size-4 text-muted" /> No credit card required
-                    </span>
-                    <span class="inline-flex items-center gap-1.5">
-                        <x-icon name="timer" class="size-4 text-muted" /> Set up in under 5 minutes
-                    </span>
-                </div>
+    <section class="relative -mt-16">
+        {{-- deep forest panel with angular cuts --}}
+        <div class="relative overflow-hidden bg-[#0d3b2d] pb-24 pt-28 sm:pt-32 lg:pb-24
+                    [clip-path:polygon(0_0,100%_0,100%_97%,0_100%)]
+                    md:[clip-path:polygon(0_0,93.5%_0,100%_9%,100%_82%,46%_100%,0_90%)]">
+            {{-- subtle texture on the panel --}}
+            <div class="pointer-events-none absolute inset-0">
+                <div class="absolute inset-0 bg-dotgrid opacity-[0.07] [--line-strong:rgba(255,255,255,0.6)]"></div>
+                <div class="absolute right-[-120px] top-[-160px] h-[480px] w-[480px] rounded-full opacity-30 blur-[110px] [background-image:radial-gradient(closest-side,rgba(47,177,138,0.8),transparent)]"></div>
             </div>
 
-            {{-- product preview: a live-looking inbox + conversation, pure HTML/CSS --}}
-            <div class="relative mx-auto mt-16 max-w-5xl animate-enter-up [animation-delay:0.3s]">
-                <div class="pointer-events-none absolute -inset-x-12 -top-8 bottom-0 -z-10 rounded-full opacity-50 blur-[100px] [background-image:radial-gradient(closest-side,rgba(25,157,118,0.28),transparent)]"></div>
-                <x-marketing.preview />
+            <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-8">
+                {{-- copy --}}
+                <div class="stagger">
+                    <a href="{{ route('changelog.index') }}" wire:navigate
+                       class="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 text-[12.5px] text-white/70 backdrop-blur-sm transition-colors hover:text-white">
+                        <span class="inline-flex items-center gap-1.5 font-medium text-jade-300">
+                            <span class="size-1.5 rounded-full bg-jade-400 animate-pulse-dot"></span> New
+                        </span>
+                        SLA targets, CSAT surveys &amp; saved replies
+                        <x-icon name="arrow-right" class="size-3.5 transition-transform group-hover:translate-x-0.5" />
+                    </a>
+
+                    <h1 class="mt-7 font-display text-5xl font-semibold leading-[1.06] tracking-tight text-white sm:text-6xl lg:text-[54px] xl:text-[58px]">
+                        Customer support without the
+                        <span class="relative inline-block text-jade-300">chaos<svg class="absolute -bottom-1.5 left-0 w-full" viewBox="0 0 120 8" fill="none" preserveAspectRatio="none"><path d="M2 6C20 2 50 1.5 118 4.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" class="text-jade-400/50"/></svg></span>
+                    </h1>
+
+                    <p class="mt-6 max-w-md text-pretty text-lg leading-relaxed text-white/70">
+                        Deskly is the calm, fast help desk for teams who answer like humans and measure like operators. One inbox, clear ownership, honest metrics.
+                    </p>
+
+                    <div class="mt-8 flex flex-wrap items-center gap-3">
+                        <a href="{{ route('login') }}" class="btn btn-lg bg-jade-500 text-white shadow-[0_4px_20px_rgba(25,157,118,0.4)] transition-all hover:-translate-y-px hover:bg-jade-400">
+                            Start for free <x-icon name="arrow-right" class="size-4" />
+                        </a>
+                        <a href="{{ route('login') }}" class="btn btn-lg border border-white/25 text-white hover:bg-white/10">
+                            Live demo
+                        </a>
+                    </div>
+
+                    <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] text-white/60">
+                        <span class="inline-flex items-center gap-1.5">
+                            <x-icon name="credit-card" class="size-4 text-white/50" /> No credit card required
+                        </span>
+                        <span class="inline-flex items-center gap-1.5">
+                            <x-icon name="timer" class="size-4 text-white/50" /> Set up in under 5 minutes
+                        </span>
+                    </div>
+                </div>
+
+                {{-- product preview, scaled to sit beside the copy --}}
+                <div class="relative min-w-0 animate-enter-up [animation-delay:0.25s]">
+                    <div class="pointer-events-none absolute -inset-8 rounded-3xl bg-black/20 blur-2xl"></div>
+                    <div class="relative lg:h-[440px]">
+                        <div class="lg:absolute lg:left-0 lg:top-0 lg:w-[920px] lg:origin-top-left lg:scale-[0.65]">
+                            <x-marketing.preview />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     {{-- ===================== LOGOS ===================== --}}
-    <section class="border-y border-line bg-canvas-subtle">
-        <div class="mx-auto max-w-5xl px-5 py-10 sm:px-8">
-            <p class="text-center text-[12px] font-medium uppercase tracking-wider text-subtle">Support teams who switched and stayed</p>
-            <div class="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-70">
-                @foreach (['Lumen Analytics', 'Coastal Supply', 'Brightpath', 'Nordic Grid', 'Apex Logistics', 'Veloz Tech'] as $brand)
-                    <span class="font-display text-lg font-semibold tracking-tight text-muted">{{ $brand }}</span>
+    <section class="bg-canvas">
+        <div class="mx-auto max-w-5xl px-5 pb-12 pt-10 sm:px-8">
+            <p class="text-center text-[12px] font-medium uppercase tracking-[0.18em] text-subtle">Trusted by support teams who care</p>
+            <div class="mt-7 flex flex-wrap items-center justify-center gap-x-14 gap-y-6">
+                @foreach ([
+                    ['sparkle', 'Lumen', 'font-display text-xl font-semibold tracking-tight'],
+                    ['send', 'Sparrow', 'font-display text-xl font-semibold tracking-tight'],
+                    ['layers', 'catalog', 'font-display text-xl font-semibold lowercase tracking-tight'],
+                    ['zap', 'PULSE', 'text-lg font-bold tracking-[0.22em]'],
+                    ['cube', 'Hexa', 'font-display text-xl font-semibold tracking-tight'],
+                ] as [$glyph, $brand, $type])
+                    <span class="inline-flex items-center gap-2 text-fg/60">
+                        <x-icon :name="$glyph" class="size-5" />
+                        <span class="{{ $type }}">{{ $brand }}</span>
+                    </span>
                 @endforeach
             </div>
         </div>
