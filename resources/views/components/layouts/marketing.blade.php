@@ -24,7 +24,7 @@
                     <x-logo />
                 </a>
 
-                <nav class="hidden items-center gap-1 md:flex">
+                <nav class="hidden items-center gap-1 md:flex absolute left-1/2 -translate-x-1/2">
                     <a href="{{ url('/#features') }}" class="nav-item">Features</a>
                     <a href="{{ route('pricing') }}" class="nav-item" wire:navigate>Pricing</a>
                     <a href="{{ route('changelog.index') }}" class="nav-item" wire:navigate>Changelog</a>
