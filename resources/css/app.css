@@ -426,7 +426,7 @@
 }
 
 @utility glass {
-    background-color: color-mix(in oklab, var(--canvas) 72%, transparent);
+    background-color: color-mix(in oklab, var(--canvas) 86%, transparent);
     backdrop-filter: blur(14px) saturate(140%);
     -webkit-backdrop-filter: blur(14px) saturate(140%);
 }

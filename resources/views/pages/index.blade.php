@@ -11,7 +11,7 @@ name('home');
     {{-- ===================== HERO ===================== --}}
     <section class="relative -mt-16">
         {{-- deep forest panel --}}
-        <div class="relative overflow-hidden bg-[#0a3127] pb-24 pt-28 sm:pt-32 lg:pb-28">
+        <div class="relative overflow-hidden bg-[#0a3127] pb-24 pt-32 sm:pt-40 lg:pb-32">
             {{-- layered atmosphere: vertical depth, jade bloom behind the preview, faint grid --}}
             <div class="pointer-events-none absolute inset-0">
                 <div class="absolute inset-0 [background-image:linear-gradient(180deg,#0e4434_0%,#0b3529_55%,#082b21_100%)]"></div>
@@ -26,7 +26,7 @@ name('home');
                 {{-- copy --}}
                 <div class="stagger">
                     <a href="{{ route('changelog.index') }}" wire:navigate
-                       class="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 text-[12.5px] text-white/70 backdrop-blur-sm transition-colors hover:text-white">
+                       class="group inline-flex items-center lg:mt-10 gap-2 rounded-full border border-white/20 bg-white/5 px-3 py-1 text-[12.5px] text-white/70 backdrop-blur-sm transition-colors hover:text-white">
                         <span class="inline-flex items-center gap-1.5 font-medium text-jade-300">
                             <span class="size-1.5 rounded-full bg-jade-400 animate-pulse-dot"></span> New
                         </span>
@@ -66,8 +66,8 @@ name('home');
                 <div class="relative min-w-0 animate-enter-up [animation-delay:0.25s]">
                     <div class="pointer-events-none absolute -inset-10 rounded-[2rem] bg-jade-400/15 blur-3xl"></div>
                     <div class="pointer-events-none absolute -inset-6 rounded-3xl bg-black/25 blur-2xl"></div>
-                    <div class="relative lg:h-[440px]">
-                        <div class="rounded-xl ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)] lg:absolute lg:left-0 lg:top-0 lg:w-[920px] lg:origin-top-left lg:scale-[0.65]">
+                    <div class="relative lg:h-[440px] -translate-y-10">
+                        <div class="rounded-xl ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)] lg:absolute lg:left-0 lg:top-0 lg:w-[920px] lg:origin-top-left lg:scale-100">
                             <x-marketing.preview />
                         </div>
                     </div>
@@ -77,7 +77,7 @@ name('home');
     </section>
 
     {{-- ===================== LOGOS ===================== --}}
-    <section class="bg-canvas">
+    <section class="bg-canvas border-t border-stone-200">
         <div class="mx-auto max-w-5xl px-5 pb-12 pt-10 sm:px-8">
             <p class="text-center text-[12px] font-medium uppercase tracking-[0.18em] text-subtle">Trusted by support teams who care</p>
             <div class="mt-7 flex flex-wrap items-center justify-center gap-x-14 gap-y-6">

@@ -20,7 +20,7 @@
             class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
             :class="scrolled ? 'glass border-b border-line' : 'border-b border-transparent {{ $heroNav ? 'nav-on-dark' : '' }}'"
         >
-            <div class="mx-auto flex h-16 max-w-5xl items-center justify-between px-5 sm:px-8">
+            <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
                 <a href="{{ url('/') }}" class="flex items-center" wire:navigate.hover>
                     <x-logo />
                 </a>
