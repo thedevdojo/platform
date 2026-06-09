@@ -107,7 +107,7 @@ new class extends Component
     </section>
 
     {{-- plans --}}
-    <section class="mx-auto max-w-6xl px-5 pb-16 sm:px-8">
+    <section class="mx-auto max-w-5xl px-5 pb-16 sm:px-8">
         <div class="grid items-start gap-4 md:grid-cols-3">
             @foreach ($plans as $plan)
                 @php

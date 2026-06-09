@@ -42,7 +42,7 @@ name('blog.index');
     </section>
 
     {{-- ===================== POSTS ===================== --}}
-    <section class="mx-auto max-w-6xl px-5 pb-28 sm:px-8">
+    <section class="mx-auto max-w-5xl px-5 pb-28 sm:px-8">
         @if ($posts->isNotEmpty())
             {{-- featured hero --}}
             @if ($featured)

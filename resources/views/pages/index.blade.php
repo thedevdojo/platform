@@ -25,8 +25,8 @@ name('home');
                     <x-icon name="arrow-right" class="size-3.5 transition-transform group-hover:translate-x-0.5" />
                 </a>
 
-                <h1 class="mt-7 max-w-3xl text-balance text-5xl font-semibold leading-[1.05] tracking-tight text-fg sm:text-[64px]">
-                    Project management with <span class="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">momentum</span>
+                <h1 class="mt-7 max-w-3xl text-balance text-5xl font-bold leading-[1.05] tracking-tight text-fg sm:text-[54px]">
+                    Project management without the <span class="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">project management</span>
                 </h1>
 
                 <p class="mt-6 max-w-xl text-balance text-lg text-muted">
@@ -56,7 +56,7 @@ name('home');
 
     {{-- ===================== LOGOS ===================== --}}
     <section class="border-y border-line bg-canvas-subtle">
-        <div class="mx-auto max-w-6xl px-5 py-10 sm:px-8">
+        <div class="mx-auto max-w-5xl px-5 py-10 sm:px-8">
             <p class="text-center text-[12px] font-medium uppercase tracking-wider text-subtle">Trusted by fast-moving teams</p>
             <div class="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-70">
                 @foreach (['Northwind', 'Loopline', 'Vertex', 'Helio', 'Cascade', 'Monolith'] as $brand)
@@ -67,7 +67,7 @@ name('home');
     </section>
 
     {{-- ===================== FEATURES (bento) ===================== --}}
-    <section id="features" class="mx-auto max-w-6xl scroll-mt-20 px-5 py-24 sm:px-8">
+    <section id="features" class="mx-auto max-w-5xl scroll-mt-20 px-5 py-24 sm:px-8">
         <div class="max-w-2xl">
             <p class="text-sm font-semibold text-accent">Everything in one place</p>
             <h2 class="mt-3 text-balance text-4xl font-semibold tracking-tight text-fg">A workspace that keeps pace with your team</h2>
@@ -133,7 +133,7 @@ name('home');
 
     {{-- ===================== PRICING PREVIEW ===================== --}}
     <section class="border-t border-line bg-canvas-subtle">
-        <div class="mx-auto max-w-6xl px-5 py-24 sm:px-8">
+        <div class="mx-auto max-w-5xl px-5 py-24 sm:px-8">
             <div class="mx-auto max-w-2xl text-center">
                 <h2 class="text-balance text-4xl font-semibold tracking-tight text-fg">Simple, honest pricing</h2>
                 <p class="mt-4 text-lg text-muted">Start free. Upgrade when your team outgrows it.</p>

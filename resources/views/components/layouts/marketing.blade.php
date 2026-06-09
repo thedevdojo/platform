@@ -9,6 +9,7 @@
 <html lang="en" class="dark scroll-smooth">
 <head>
     <x-partials.head :title="$title" :description="$description" />
+    @livewireStyles
 </head>
 <body class="min-h-screen antialiased">
     @if ($nav)
@@ -18,7 +19,7 @@
             class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
             :class="scrolled ? 'glass border-b border-line' : 'border-b border-transparent'"
         >
-            <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
+            <div class="mx-auto flex h-16 max-w-5xl items-center justify-between px-5 sm:px-8">
                 <a href="{{ url('/') }}" class="flex items-center" wire:navigate.hover>
                     <x-logo />
                 </a>
@@ -51,7 +52,7 @@
 
     @if ($footer)
         <footer class="border-t border-line bg-canvas-subtle">
-            <div class="mx-auto max-w-7xl px-5 py-14 sm:px-8">
+            <div class="mx-auto max-w-5xl px-5 py-14 sm:px-8">
                 <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
                     <div>
                         <x-logo />
@@ -97,5 +98,7 @@
     @endif
 
     <div x-data><x-toasts /></div>
+
+    @livewireScripts
 </body>
 </html>

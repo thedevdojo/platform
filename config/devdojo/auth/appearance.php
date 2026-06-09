@@ -17,7 +17,7 @@ return [
         'height' => '28',
     ],
     'background' => [
-        'color' => '#3040eb',
+        'color' => '#ffffff',
         'image' => '',
         'image_overlay_color' => '#000000',
         'image_overlay_opacity' => '0.5',

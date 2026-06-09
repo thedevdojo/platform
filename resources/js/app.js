@@ -24,6 +24,24 @@ function currentTheme() {
     }
 }
 
+// Re-apply the saved theme on every Livewire `wire:navigate` page swap.
+//
+// During SPA navigation Livewire copies the freshly-fetched page's <html>
+// attributes onto the live document, and every page is server-rendered with
+// the default `class="dark"`. The anti-flash <script> in <head> only runs on
+// the first load (head scripts run once with wire:navigate), so without this
+// a navigation would clobber a stored "light" preference and snap back to
+// dark. The onSwap callback runs right after the new HTML is swapped in but
+// before the browser paints, so the correction happens without any flicker.
+document.addEventListener('livewire:navigating', (event) => {
+    const reapply = () => applyTheme(currentTheme());
+    if (event.detail && typeof event.detail.onSwap === 'function') {
+        event.detail.onSwap(reapply);
+    } else {
+        reapply();
+    }
+});
+
 document.addEventListener('alpine:init', () => {
     window.Alpine.store('theme', {
         current: currentTheme(),
