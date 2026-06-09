@@ -5,9 +5,11 @@ use App\Models\Tag;
 use App\Models\Ticket;
 use App\Models\User;
 
+use App\Http\Middleware\EnsureUserIsAgent;
+
 use function Laravel\Folio\{middleware, name};
 
-middleware(['auth']);
+middleware(['auth', EnsureUserIsAgent::class]);
 name('reports');
 
 ?>

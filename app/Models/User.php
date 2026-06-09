@@ -123,6 +123,14 @@ class User extends AuthUser
     }
 
     /**
+     * Whether the user is part of the support team (agents and admins).
+     */
+    public function isAgent(): bool
+    {
+        return $this->hasAnyRole(['agent', 'admin']);
+    }
+
+    /**
      * Whether a stored avatar value is an absolute URL or root-relative path.
      */
     public function hasAvatarImage(): bool

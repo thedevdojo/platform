@@ -16,9 +16,10 @@ use Spatie\Permission\Models\Role;
 
 beforeEach(function () {
     Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);
+    Role::firstOrCreate(['name' => 'agent', 'guard_name' => 'web']);
 
     $this->user = User::factory()->create(['username' => 'demo']);
-    $this->user->assignRole('admin');
+    $this->user->assignRole(['admin', 'agent']);
 
     $this->customer = Customer::factory()->create();
 

@@ -4,9 +4,11 @@ use App\Enums\TicketStatus;
 use App\Models\Ticket;
 use App\Models\TicketEvent;
 
+use App\Http\Middleware\EnsureUserIsAgent;
+
 use function Laravel\Folio\{middleware, name};
 
-middleware(['auth']);
+middleware(['auth', EnsureUserIsAgent::class]);
 name('dashboard');
 
 ?>
