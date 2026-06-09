@@ -9,15 +9,78 @@ name('home');
 <x-layouts.marketing>
     {{-- ===================== HERO ===================== --}}
     <section class="relative overflow-hidden">
-        {{-- atmosphere --}}
-        <div class="pointer-events-none absolute inset-0 -z-10 bg-grid [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_60%,transparent_100%)]"></div>
-        <div class="pointer-events-none absolute left-1/2 top-[-10%] -z-10 h-[480px] w-[820px] -translate-x-1/2 rounded-full opacity-60 blur-[120px]"
-             style="background-image:radial-gradient(closest-side, rgba(124,121,255,0.40), transparent);"></div>
+        {{-- atmosphere: plexus background image glowing up from the bottom --}}
+        <div class="pointer-events-none absolute inset-0 -z-10">
+            {{-- light mode: soft blue plexus on white --}}
+            <img src="{{ asset('images/hero-bg-light.png') }}" alt="" aria-hidden="true"
+                 class="absolute inset-x-0 bottom-0 w-full select-none dark:hidden" />
+            {{-- dark mode: glowing plexus on black --}}
+            <img src="{{ asset('images/hero-bg.png') }}" alt="" aria-hidden="true"
+                 class="absolute inset-x-0 bottom-0 hidden w-full select-none dark:block" />
+            {{-- blend the image top into the page canvas --}}
+            <div class="absolute inset-x-0 top-0 h-1/2 bg-linear-to-b from-canvas to-transparent"></div>
+            {{-- soft accent glow behind the headline --}}
+            <div class="absolute left-1/2 top-[6%] h-[420px] w-[760px] -translate-x-1/2 rounded-full opacity-50 blur-[130px] [background-image:radial-gradient(closest-side,rgba(95,51,254,0.45),transparent)]"></div>
+            {{-- fade into the section below --}}
+            <div class="absolute inset-x-0 bottom-0 h-40 bg-linear-to-b from-transparent to-canvas"></div>
+        </div>
 
-        <div class="mx-auto max-w-5xl px-5 pt-24 pb-16 text-center sm:px-8 sm:pt-32">
+        <div class="relative mx-auto max-w-5xl px-5 pt-24 pb-16 text-center sm:px-8 sm:pt-32">
+            {{-- floating stat cards (wide screens only) --}}
+            <div class="pointer-events-none absolute left-0 top-[30%] hidden animate-float xl:block 2xl:left-6">
+                <div class="-rotate-3 rounded-2xl border border-line-strong bg-surface/75 px-4 py-3 shadow-pop backdrop-blur-md">
+                    <div class="flex items-center gap-3">
+                        <div class="grid size-10 shrink-0 place-items-center rounded-xl bg-accent-soft ring-1 ring-accent-line">
+                            <x-icon name="users" class="size-5 text-accent" />
+                        </div>
+                        <div class="text-left">
+                            <p class="text-xl font-semibold tracking-tight text-fg tabular-nums">92%</p>
+                            <p class="text-[12px] text-subtle">On-time delivery</p>
+                        </div>
+                    </div>
+                    <p class="mt-2 flex items-center gap-1 text-[11px] font-medium text-emerald-400 tabular-nums">
+                        <x-icon name="arrow-up-right" class="size-3.5" /> 18% <span class="text-subtle">vs last month</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="pointer-events-none absolute right-0 top-[10%] hidden animate-float [animation-delay:-2s] xl:block 2xl:right-4">
+                <div class="rotate-2 rounded-2xl border border-line-strong bg-surface/75 px-4 py-3 shadow-pop backdrop-blur-md">
+                    <div class="flex items-center gap-3">
+                        <div class="grid size-10 shrink-0 place-items-center rounded-full bg-accent-soft ring-1 ring-accent-line">
+                            <x-icon name="zap" class="size-5 text-accent" />
+                        </div>
+                        <div class="text-left">
+                            <p class="text-xl font-semibold tracking-tight text-fg tabular-nums">24h</p>
+                            <p class="text-[12px] text-subtle">Avg. cycle time</p>
+                        </div>
+                    </div>
+                    <p class="mt-2 flex items-center gap-1 text-[11px] font-medium text-emerald-400 tabular-nums">
+                        <x-icon name="arrow-up-right" class="size-3.5 rotate-90" /> 12% <span class="text-subtle">vs last month</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="pointer-events-none absolute right-0 top-[52%] hidden animate-float [animation-delay:-4s] xl:block 2xl:right-2">
+                <div class="rotate-3 rounded-2xl border border-line-strong bg-surface/75 px-4 py-3 shadow-pop backdrop-blur-md">
+                    <div class="flex items-center gap-3">
+                        <div class="grid size-10 shrink-0 place-items-center rounded-xl bg-accent-soft ring-1 ring-accent-line">
+                            <x-icon name="check-circle" class="size-5 text-accent" />
+                        </div>
+                        <div class="text-left">
+                            <p class="text-xl font-semibold tracking-tight text-fg tabular-nums">98%</p>
+                            <p class="text-[12px] text-subtle">Task completion</p>
+                        </div>
+                    </div>
+                    <p class="mt-2 flex items-center gap-1 text-[11px] font-medium text-emerald-400 tabular-nums">
+                        <x-icon name="arrow-up-right" class="size-3.5" /> 14% <span class="text-subtle">vs last month</span>
+                    </p>
+                </div>
+            </div>
+
             <div class="stagger flex flex-col items-center">
                 <a href="{{ route('changelog.index') }}" wire:navigate
-                   class="group inline-flex items-center gap-2 rounded-full border border-line-strong bg-surface px-3 py-1 text-[12.5px] text-muted shadow-soft transition-colors hover:text-fg">
+                   class="group inline-flex items-center gap-2 rounded-full border border-line-strong bg-surface/70 px-3 py-1 text-[12.5px] text-muted shadow-soft backdrop-blur-sm transition-colors hover:text-fg">
                     <span class="inline-flex items-center gap-1.5 font-medium text-accent">
                         <span class="size-1.5 rounded-full bg-accent"></span> New
                     </span>
@@ -25,11 +88,11 @@ name('home');
                     <x-icon name="arrow-right" class="size-3.5 transition-transform group-hover:translate-x-0.5" />
                 </a>
 
-                <h1 class="mt-7 max-w-3xl text-balance text-5xl font-bold leading-[1.05] tracking-tight text-fg sm:text-[54px]">
-                    Project management without the <span class="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">project management</span>
+                <h1 class="mt-8 max-w-4xl text-balance text-5xl font-bold leading-[1.04] tracking-tight text-fg sm:text-6xl lg:text-[68px]">
+                    Project management that moves <span class="bg-linear-to-r from-[#5d5bff] via-[#6f5cff] to-[#9a7bff] bg-clip-text text-transparent">work forward</span>
                 </h1>
 
-                <p class="mt-6 max-w-xl text-balance text-lg text-muted">
+                <p class="mt-7 max-w-xl text-balance text-lg text-muted">
                     Relay is the focused, beautifully fast tool for teams who ship. Plan, prioritize and move work forward — without the clutter.
                 </p>
 
@@ -42,13 +105,19 @@ name('home');
                     </a>
                 </div>
 
-                <p class="mt-4 text-[13px] text-subtle">No credit card required · Free for up to 2 projects</p>
+                <div class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[13px] text-subtle">
+                    <span class="inline-flex items-center gap-1.5">
+                        <x-icon name="credit-card" class="size-4 text-muted" /> No credit card required
+                    </span>
+                    <span class="inline-flex items-center gap-1.5">
+                        <x-icon name="shield-check" class="size-4 text-muted" /> Free for up to 2 projects
+                    </span>
+                </div>
             </div>
 
             {{-- product preview --}}
             <div class="relative mx-auto mt-16 max-w-5xl animate-enter-up [animation-delay:0.3s]">
-                <div class="pointer-events-none absolute -inset-x-12 -top-8 bottom-0 -z-10 rounded-full opacity-50 blur-[100px]"
-                     style="background-image:radial-gradient(closest-side, rgba(124,121,255,0.25), transparent);"></div>
+                <div class="pointer-events-none absolute -inset-x-12 -top-8 bottom-0 -z-10 rounded-full opacity-50 blur-[100px] [background-image:radial-gradient(closest-side,rgba(95,51,254,0.30),transparent)]"></div>
                 <x-marketing.preview />
             </div>
         </div>

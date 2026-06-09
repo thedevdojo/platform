@@ -30,11 +30,11 @@
     --muted: #52525b;
     --subtle: #8a8a93;
 
-    --accent: #6366f1;
-    --accent-hover: #4f46e5;
+    --accent: #5f33fe;
+    --accent-hover: #4a22e0;
     --accent-fg: #ffffff;
-    --accent-soft: rgba(99, 102, 241, 0.10);
-    --accent-line: rgba(99, 102, 241, 0.30);
+    --accent-soft: rgba(95, 51, 254, 0.10);
+    --accent-line: rgba(95, 51, 254, 0.30);
 
     --shadow-color: 220 40% 12%;
 }
@@ -53,11 +53,11 @@
     --muted: #a0a0ab;
     --subtle: #6b6b76;
 
-    --accent: #7c79ff;
-    --accent-hover: #918fff;
+    --accent: #5f33fe;
+    --accent-hover: #7458ff;
     --accent-fg: #ffffff;
-    --accent-soft: rgba(124, 121, 255, 0.14);
-    --accent-line: rgba(124, 121, 255, 0.38);
+    --accent-soft: rgba(95, 51, 254, 0.16);
+    --accent-line: rgba(95, 51, 254, 0.42);
 
     --shadow-color: 240 60% 2%;
 }
@@ -360,9 +360,15 @@
     to { opacity: 1; transform: scale(1); }
 }
 
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-7px); }
+}
+
 .animate-enter-up { animation: enter-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
 .animate-enter-fade { animation: enter-fade 0.5s ease both; }
 .animate-enter-scale { animation: enter-scale 0.18s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-float { animation: float 6s ease-in-out infinite; }
 
 /* Staggered list reveal helper */
 .stagger > * { animation: enter-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
