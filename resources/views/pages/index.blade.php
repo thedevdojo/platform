@@ -10,14 +10,16 @@ name('home');
 
     {{-- ===================== HERO ===================== --}}
     <section class="relative -mt-16">
-        {{-- deep forest panel with angular cuts --}}
-        <div class="relative overflow-hidden bg-[#0d3b2d] pb-24 pt-28 sm:pt-32 lg:pb-24
-                    [clip-path:polygon(0_0,100%_0,100%_97%,0_100%)]
-                    md:[clip-path:polygon(0_0,93.5%_0,100%_9%,100%_82%,46%_100%,0_90%)]">
-            {{-- subtle texture on the panel --}}
+        {{-- deep forest panel --}}
+        <div class="relative overflow-hidden bg-[#0a3127] pb-24 pt-28 sm:pt-32 lg:pb-28">
+            {{-- layered atmosphere: vertical depth, jade bloom behind the preview, faint grid --}}
             <div class="pointer-events-none absolute inset-0">
-                <div class="absolute inset-0 bg-dotgrid opacity-[0.07] [--line-strong:rgba(255,255,255,0.6)]"></div>
-                <div class="absolute right-[-120px] top-[-160px] h-[480px] w-[480px] rounded-full opacity-30 blur-[110px] [background-image:radial-gradient(closest-side,rgba(47,177,138,0.8),transparent)]"></div>
+                <div class="absolute inset-0 [background-image:linear-gradient(180deg,#0e4434_0%,#0b3529_55%,#082b21_100%)]"></div>
+                <div class="absolute right-[-140px] top-[-180px] h-[640px] w-[640px] rounded-full opacity-40 blur-[120px] [background-image:radial-gradient(closest-side,rgba(47,177,138,0.75),transparent)]"></div>
+                <div class="absolute bottom-[-220px] left-[8%] h-[420px] w-[680px] rounded-full opacity-25 blur-[110px] [background-image:radial-gradient(closest-side,rgba(125,207,176,0.5),transparent)]"></div>
+                <div class="absolute inset-0 bg-dotgrid opacity-[0.08] [--line-strong:rgba(255,255,255,0.55)] [mask-image:radial-gradient(ellipse_80%_70%_at_50%_20%,black,transparent_85%)]"></div>
+                {{-- hairline glow along the bottom edge --}}
+                <div class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-jade-400/40 to-transparent"></div>
             </div>
 
             <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-8">
@@ -62,9 +64,10 @@ name('home');
 
                 {{-- product preview, scaled to sit beside the copy --}}
                 <div class="relative min-w-0 animate-enter-up [animation-delay:0.25s]">
-                    <div class="pointer-events-none absolute -inset-8 rounded-3xl bg-black/20 blur-2xl"></div>
+                    <div class="pointer-events-none absolute -inset-10 rounded-[2rem] bg-jade-400/15 blur-3xl"></div>
+                    <div class="pointer-events-none absolute -inset-6 rounded-3xl bg-black/25 blur-2xl"></div>
                     <div class="relative lg:h-[440px]">
-                        <div class="lg:absolute lg:left-0 lg:top-0 lg:w-[920px] lg:origin-top-left lg:scale-[0.65]">
+                        <div class="rounded-xl ring-1 ring-white/15 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.55)] lg:absolute lg:left-0 lg:top-0 lg:w-[920px] lg:origin-top-left lg:scale-[0.65]">
                             <x-marketing.preview />
                         </div>
                     </div>
