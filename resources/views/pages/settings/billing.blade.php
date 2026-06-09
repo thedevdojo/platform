@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Middleware\EnsureUserIsAdmin;
 use App\Http\Middleware\EnsureUserIsAgent;
 
 use function Laravel\Folio\{middleware, name};
 
-middleware(['auth', EnsureUserIsAgent::class]);
+middleware(['auth', EnsureUserIsAgent::class, EnsureUserIsAdmin::class]);
 name('settings.billing');
 
 ?>

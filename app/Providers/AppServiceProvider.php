@@ -6,6 +6,7 @@ use Carbon\CarbonImmutable;
 use Filament\FilamentServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
@@ -27,6 +28,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->configureDefaults();
         $this->registerFilamentStubs();
+
+        // Outside local environments, only admins may open /foundation/setup
+        // (the foundation package's middleware checks this gate).
+        Gate::define('viewFoundationSetup', fn ($user) => $user->isAdmin());
     }
 
     /**

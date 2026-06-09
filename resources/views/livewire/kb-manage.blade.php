@@ -89,6 +89,8 @@ new class extends Component
 
     public function deleteArticle(int $articleId): void
     {
+        abort_unless(auth()->user()->isAdmin(), 403);
+
         Article::findOrFail($articleId)->delete();
 
         unset($this->categories);
@@ -140,9 +142,11 @@ new class extends Component
                                     <x-icon name="arrow-up-right" class="size-4" />
                                 </a>
                             @endif
-                            <button wire:click="deleteArticle({{ $article->id }})" wire:confirm="Delete “{{ $article->title }}”? This can't be undone." class="btn btn-ghost btn-sm !px-1.5 shrink-0 text-subtle hover:!text-rose-500" title="Delete">
-                                <x-icon name="trash" class="size-4" />
-                            </button>
+                            @if (auth()->user()->isAdmin())
+                                <button wire:click="deleteArticle({{ $article->id }})" wire:confirm="Delete “{{ $article->title }}”? This can't be undone." class="btn btn-ghost btn-sm !px-1.5 shrink-0 text-subtle hover:!text-rose-500" title="Delete">
+                                    <x-icon name="trash" class="size-4" />
+                                </button>
+                            @endif
                         </div>
                     @empty
                         <p class="px-4 py-6 text-center text-[13px] text-subtle">No articles in this category yet.</p>

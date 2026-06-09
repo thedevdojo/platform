@@ -6,8 +6,8 @@
         ['label' => 'Security', 'route' => 'settings.security', 'icon' => 'shield', 'on' => true],
         ['label' => 'Saved replies', 'route' => 'settings.replies', 'icon' => 'reply', 'on' => true],
         ['label' => 'Notifications', 'route' => 'settings.notifications', 'icon' => 'bell', 'on' => Foundation::enabled('notifications')],
-        ['label' => 'Billing', 'route' => 'settings.billing', 'icon' => 'credit-card', 'on' => Foundation::enabled('billing')],
-        ['label' => 'Team', 'route' => 'settings.team', 'icon' => 'users', 'on' => true],
+        ['label' => 'Billing', 'route' => 'settings.billing', 'icon' => 'credit-card', 'on' => Foundation::enabled('billing') && auth()->user()?->isAdmin()],
+        ['label' => 'Team', 'route' => 'settings.team', 'icon' => 'users', 'on' => (bool) auth()->user()?->isAdmin()],
     ], fn ($t) => $t['on']);
 @endphp
 

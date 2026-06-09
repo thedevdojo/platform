@@ -68,10 +68,12 @@
                 </div>
                 <x-icon name="check" class="size-4 text-accent" />
             </div>
-            @if (Foundation::enabled('billing'))
-                <a href="{{ route('pricing') }}" wire:navigate class="nav-item mt-1 w-full"><x-icon name="zap" class="size-4" /> Upgrade plan</a>
+            @if ($user?->isAdmin())
+                @if (Foundation::enabled('billing'))
+                    <a href="{{ route('pricing') }}" wire:navigate class="nav-item mt-1 w-full"><x-icon name="zap" class="size-4" /> Upgrade plan</a>
+                @endif
+                <a href="{{ route('foundation.setup') }}" class="nav-item w-full"><x-icon name="layers" class="size-4" /> Features</a>
             @endif
-            <a href="{{ route('foundation.setup') }}" class="nav-item w-full"><x-icon name="layers" class="size-4" /> Features</a>
         </div>
     </div>
 
