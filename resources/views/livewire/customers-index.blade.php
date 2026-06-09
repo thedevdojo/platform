@@ -11,6 +11,33 @@ new class extends Component
     #[Url(as: 'q', history: true)]
     public string $search = '';
 
+    public bool $showCreate = false;
+
+    public string $newName = '';
+
+    public string $newEmail = '';
+
+    public string $newCompany = '';
+
+    public function createCustomer(): void
+    {
+        $this->validate([
+            'newName' => 'required|string|max:120',
+            'newEmail' => 'required|email|unique:customers,email',
+            'newCompany' => 'nullable|string|max:120',
+        ]);
+
+        Customer::create([
+            'name' => $this->newName,
+            'email' => strtolower($this->newEmail),
+            'company' => $this->newCompany ?: null,
+        ]);
+
+        $this->reset('showCreate', 'newName', 'newEmail', 'newCompany');
+        unset($this->customers);
+        $this->dispatch('toast', type: 'success', message: 'Customer added');
+    }
+
     #[Computed]
     public function customers()
     {
@@ -29,14 +56,61 @@ new class extends Component
 <div class="mx-auto max-w-6xl px-5 py-6 sm:px-8">
     <div class="flex flex-wrap items-center justify-between gap-3">
         <p class="text-[13.5px] text-muted">{{ $this->customers->count() }} {{ \Illuminate\Support\Str::plural('customer', $this->customers->count()) }}</p>
-        <div class="relative">
-            <x-icon name="search" class="pointer-events-none absolute left-2.5 top-1/2 size-4 -translate-y-1/2 text-subtle" />
-            <input
-                type="search"
-                wire:model.live.debounce.300ms="search"
-                placeholder="Search customers…"
-                class="input !h-8 w-48 !pl-8 text-[13px] sm:w-64"
-            />
+        <div class="flex items-center gap-2">
+            <div class="relative">
+                <x-icon name="search" class="pointer-events-none absolute left-2.5 top-1/2 size-4 -translate-y-1/2 text-subtle" />
+                <input
+                    type="search"
+                    wire:model.live.debounce.300ms="search"
+                    placeholder="Search customers…"
+                    class="input !h-8 w-48 !pl-8 text-[13px] sm:w-64"
+                />
+            </div>
+            <button wire:click="$set('showCreate', true)" class="btn btn-primary btn-sm">
+                <x-icon name="plus" class="size-4" /> New customer
+            </button>
+        </div>
+    </div>
+
+    {{-- New customer modal --}}
+    <div x-data x-show="$wire.showCreate" x-cloak class="fixed inset-0 z-[80]" @keydown.escape.window="$wire.showCreate = false">
+        <div x-show="$wire.showCreate" x-transition.opacity @click="$wire.showCreate = false" class="absolute inset-0 bg-black/55 backdrop-blur-sm"></div>
+        <div class="absolute inset-x-0 top-[12vh] mx-auto w-full max-w-md px-4">
+            <div
+                x-show="$wire.showCreate"
+                x-transition:enter="transition ease-out duration-200"
+                x-transition:enter-start="opacity-0 translate-y-2 scale-[0.98]"
+                x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                class="card shadow-pop overflow-hidden"
+            >
+                <div class="flex items-center justify-between border-b border-line px-5 py-3.5">
+                    <h3 class="text-[14.5px] font-semibold text-fg">New customer</h3>
+                    <button @click="$wire.showCreate = false" class="btn btn-ghost btn-sm !px-2"><x-icon name="x" class="size-4" /></button>
+                </div>
+                <div class="space-y-4 px-5 py-4">
+                    <div>
+                        <label class="text-[12.5px] font-medium text-muted">Name</label>
+                        <input type="text" wire:model="newName" class="input mt-1.5" placeholder="Ada Lovelace" />
+                        @error('newName')<p class="mt-1 text-[12px] text-rose-500">{{ $message }}</p>@enderror
+                    </div>
+                    <div>
+                        <label class="text-[12.5px] font-medium text-muted">Email</label>
+                        <input type="email" wire:model="newEmail" class="input mt-1.5" placeholder="ada@example.com" />
+                        @error('newEmail')<p class="mt-1 text-[12px] text-rose-500">{{ $message }}</p>@enderror
+                    </div>
+                    <div>
+                        <label class="text-[12.5px] font-medium text-muted">Company <span class="text-subtle">(optional)</span></label>
+                        <input type="text" wire:model="newCompany" class="input mt-1.5" />
+                    </div>
+                </div>
+                <div class="flex items-center justify-end gap-2 border-t border-line px-5 py-3.5">
+                    <button @click="$wire.showCreate = false" class="btn btn-ghost btn-sm">Cancel</button>
+                    <button wire:click="createCustomer" wire:loading.attr="disabled" class="btn btn-primary btn-sm">
+                        <span wire:loading.remove wire:target="createCustomer">Add customer</span>
+                        <span wire:loading wire:target="createCustomer">Adding…</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -60,7 +60,7 @@ name('help.article');
             </div>
             <p x-show="voted === 'yes'" x-cloak class="text-[13px] text-emerald-600 dark:text-emerald-400">Great — thanks for letting us know!</p>
             <p x-show="voted === 'no'" x-cloak class="text-[13px] text-muted">
-                Sorry about that. <a href="mailto:support@nimbus.test" class="font-medium text-accent hover:underline">Write to us</a> and a human will help.
+                Sorry about that. <a href="{{ route('help.contact') }}" wire:navigate class="font-medium text-accent hover:underline">Write to us</a> and a human will help.
             </p>
         </div>
 

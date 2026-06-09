@@ -73,6 +73,7 @@
                         <p class="text-xs font-semibold uppercase tracking-wider text-subtle">Resources</p>
                         <ul class="mt-3.5 space-y-2.5 text-sm text-muted">
                             <li><a href="{{ route('help.index') }}" class="transition-colors hover:text-fg" wire:navigate>Help Center</a></li>
+                            <li><a href="{{ route('help.contact') }}" class="transition-colors hover:text-fg" wire:navigate>Contact support</a></li>
                             <li><a href="{{ route('blog.index') }}" class="transition-colors hover:text-fg" wire:navigate>Blog</a></li>
                             <li><a href="{{ route('register') }}" class="transition-colors hover:text-fg" wire:navigate>Get started</a></li>
                         </ul>

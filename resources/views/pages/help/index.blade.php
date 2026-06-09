@@ -90,8 +90,8 @@ name('help.index');
         <span class="mx-auto grid size-12 place-items-center rounded-full bg-accent-soft text-accent"><x-icon name="chat-bubble" class="size-6" /></span>
         <h2 class="mt-5 font-display text-xl font-semibold tracking-tight text-fg">Can't find what you need?</h2>
         <p class="mx-auto mt-2 max-w-sm text-[14.5px] text-muted">A real human reads every message. We typically reply within a few hours.</p>
-        <a href="mailto:support@nimbus.test" class="btn btn-primary mt-6">
-            <x-icon name="mail" class="size-4" /> Contact support
+        <a href="{{ route('help.contact') }}" wire:navigate class="btn btn-primary mt-6">
+            <x-icon name="chat-bubble" class="size-4" /> Submit a request
         </a>
     </section>
 </x-layouts.marketing>
