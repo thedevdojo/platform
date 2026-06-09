@@ -106,14 +106,14 @@ new class extends Component
             'at' => $c->created_at,
             'user' => $c->user,
             'body' => $c->body,
-        ]);
+        ])->toBase();
 
         $activities = $task->activities()->with('user')->get()->map(fn ($a) => [
             'kind' => 'activity',
             'at' => $a->created_at,
             'user' => $a->user,
             'text' => $a->description(),
-        ]);
+        ])->toBase();
 
         return $comments->merge($activities)->sortBy('at')->values();
     }
@@ -365,7 +365,7 @@ new class extends Component
                                 </button>
                                 <div x-show="open" x-cloak x-transition.origin.top.left class="card shadow-pop absolute left-0 z-50 mt-1 w-52 p-1">
                                     @foreach (\App\Enums\TaskStatus::ordered() as $s)
-                                        <button wire:click="setStatus('{{ $s->value }}')" @click="open = false" class="nav-item w-full {{ $task->status === $s ? 'bg-elevated' : '' }}">
+                                        <button wire:key="st-{{ $s->value }}" wire:click="setStatus('{{ $s->value }}')" @click="open = false" class="nav-item w-full {{ $task->status === $s ? 'bg-elevated' : '' }}">
                                             <x-icon :name="$s->icon()" class="size-4 {{ $s->color() }}" /> {{ $s->label() }}
                                             @if ($task->status === $s)<x-icon name="check" class="ml-auto size-4 text-accent" />@endif
                                         </button>
@@ -384,7 +384,7 @@ new class extends Component
                                 </button>
                                 <div x-show="open" x-cloak x-transition.origin.top.left class="card shadow-pop absolute left-0 z-50 mt-1 w-52 p-1">
                                     @foreach (\App\Enums\TaskPriority::ordered() as $p)
-                                        <button wire:click="setPriority('{{ $p->value }}')" @click="open = false" class="nav-item w-full {{ $task->priority === $p ? 'bg-elevated' : '' }}">
+                                        <button wire:key="pr-{{ $p->value }}" wire:click="setPriority('{{ $p->value }}')" @click="open = false" class="nav-item w-full {{ $task->priority === $p ? 'bg-elevated' : '' }}">
                                             <x-icon :name="$p->icon()" class="size-4 {{ $p->color() }}" /> {{ $p->label() }}
                                             @if ($task->priority === $p)<x-icon name="check" class="ml-auto size-4 text-accent" />@endif
                                         </button>
@@ -411,7 +411,7 @@ new class extends Component
                                         <span class="grid size-6 place-items-center rounded-full border border-dashed border-line-strong text-subtle"><x-icon name="user" class="size-3.5" /></span> Unassigned
                                     </button>
                                     @foreach ($this->assignees as $member)
-                                        <button wire:click="setAssignee({{ $member->id }})" @click="open = false" class="nav-item w-full {{ $task->assignee_id === $member->id ? 'bg-elevated' : '' }}">
+                                        <button wire:key="as-{{ $member->id }}" wire:click="setAssignee({{ $member->id }})" @click="open = false" class="nav-item w-full {{ $task->assignee_id === $member->id ? 'bg-elevated' : '' }}">
                                             <x-avatar :name="$member->name" :src="$member->avatar" size="sm" /> {{ $member->name }}
                                             @if ($task->assignee_id === $member->id)<x-icon name="check" class="ml-auto size-4 text-accent" />@endif
                                         </button>
@@ -436,7 +436,7 @@ new class extends Component
                                 <div x-show="open" x-cloak @click.stop x-transition.origin.top.right class="card shadow-pop absolute right-0 z-50 mt-1 w-52 p-1 text-left">
                                     @foreach ($this->allLabels as $label)
                                         @php $on = $task->labels->contains($label->id); @endphp
-                                        <button wire:click="toggleLabel({{ $label->id }})" class="nav-item w-full">
+                                        <button wire:key="lb-{{ $label->id }}" wire:click="toggleLabel({{ $label->id }})" class="nav-item w-full">
                                             <span class="size-2.5 rounded-full" style="background-color: var(--dot-{{ $label->color }})"></span>
                                             {{ $label->name }}
                                             @if ($on)<x-icon name="check" class="ml-auto size-4 text-accent" />@endif
@@ -448,7 +448,7 @@ new class extends Component
                         @if ($task->labels->isNotEmpty())
                             <div class="flex flex-wrap gap-1.5">
                                 @foreach ($task->labels as $label)
-                                    <button wire:click="toggleLabel({{ $label->id }})" class="group">
+                                    <button wire:key="tl2-{{ $label->id }}" wire:click="toggleLabel({{ $label->id }})" class="group">
                                         <x-label-chip :name="$label->name" :color="$label->color" class="transition-colors group-hover:border-rose-500/40" />
                                     </button>
                                 @endforeach
@@ -474,9 +474,9 @@ new class extends Component
                     <div>
                         <span class="mb-2.5 block text-[12.5px] font-medium text-subtle">Activity</span>
                         <div class="space-y-3">
-                            @foreach ($this->timeline as $item)
+                            @foreach ($this->timeline as $i => $item)
                                 @if ($item['kind'] === 'comment')
-                                    <div class="flex gap-2.5">
+                                    <div wire:key="tl-{{ $i }}" class="flex gap-2.5">
                                         <x-avatar :name="$item['user']?->name ?? 'User'" :src="$item['user']?->avatar" size="sm" />
                                         <div class="min-w-0 flex-1 rounded-lg rounded-tl-sm border border-line bg-canvas p-2.5">
                                             <div class="flex items-center gap-2">
@@ -487,7 +487,7 @@ new class extends Component
                                         </div>
                                     </div>
                                 @else
-                                    <div class="flex items-center gap-2.5 px-1">
+                                    <div wire:key="tl-{{ $i }}" class="flex items-center gap-2.5 px-1">
                                         <x-avatar :name="$item['user']?->name ?? 'System'" :src="$item['user']?->avatar" size="xs" />
                                         <p class="text-[12px] text-subtle text-pretty">
                                             <span class="font-medium text-muted">{{ \Illuminate\Support\Str::of($item['user']?->name ?? 'Someone')->explode(' ')->first() }}</span>
