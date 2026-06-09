@@ -9,7 +9,7 @@ Linear/Vercel-quality bar. It's running, seeded, and ready to log into in one cl
 
 ## 🔑 Log in (one click)
 
-The app is served by Herd at **https://platform.test**.
+The app is served by Herd at **https://platform-project.test**.
 
 | Account | Email | Password | Plan | What it shows |
 | --- | --- | --- | --- | --- |
@@ -18,26 +18,26 @@ The app is served by Herd at **https://platform.test**.
 
 Both are members of the **Northwind** workspace (4 projects, 42 tasks, 6 teammates).
 
-> ⚠️ I had to `herd link platform` — this project lives in `…/Sites/platform-project`,
-> and `platform.test` previously pointed at an unrelated site. It now serves Relay.
+> ℹ️ Served at `platform-project.test` via Herd's parked `~/Sites` directory (no extra setup needed).
+> `APP_URL` is set to match. (Earlier I'd temporarily linked `platform.test`; that alias has been removed.)
 
 ---
 
 ## 🗺️ Take the tour
 
-- **Landing** — https://platform.test/  (hero + live in-browser product preview)
-- **Pricing** — https://platform.test/pricing  (monthly/annual toggle, test-mode activation)
-- **Dashboard** — https://platform.test/dashboard  (your tasks, stats, activity)
-- **Projects** — https://platform.test/projects  → open **Website Redesign**
+- **Landing** — https://platform-project.test/  (hero + live in-browser product preview)
+- **Pricing** — https://platform-project.test/pricing  (monthly/annual toggle, test-mode activation)
+- **Dashboard** — https://platform-project.test/dashboard  (your tasks, stats, activity)
+- **Projects** — https://platform-project.test/projects  → open **Website Redesign**
 - **The board** — drag cards between columns (optimistic), click a card for the **slide-over**
 - **⌘K** — press it anywhere to search/jump (Cmd+K or Ctrl+K)
-- **Inbox** — https://platform.test/inbox  (the bell in the top bar too)
-- **Changelog** — https://platform.test/changelog  (unread badge clears on view)
-- **Blog** — https://platform.test/blog
-- **Public profile** — https://platform.test/u/alex
-- **Settings** — https://platform.test/settings/account  (Account, Security/2FA, Notifications, Billing, Team)
-- **Admin** — https://platform.test/admin  (blog + changelog CRUD, plans) — demo account only
-- **Feature toggles** — https://platform.test/foundation/setup
+- **Inbox** — https://platform-project.test/inbox  (the bell in the top bar too)
+- **Changelog** — https://platform-project.test/changelog  (unread badge clears on view)
+- **Blog** — https://platform-project.test/blog
+- **Public profile** — https://platform-project.test/u/alex
+- **Settings** — https://platform-project.test/settings/account  (Account, Security/2FA, Notifications, Billing, Team)
+- **Admin** — https://platform-project.test/admin  (blog + changelog CRUD, plans) — demo account only
+- **Feature toggles** — https://platform-project.test/foundation/setup
 
 **Try the free-plan gate:** log in as `free@devdojo.test`, go to Projects, click **New project** → upgrade prompt.
 
@@ -49,7 +49,7 @@ The built assets are committed-ready (`npm run build` already run). For live dev
 
 ```bash
 npm run dev          # Vite for hot CSS/JS
-# Herd serves PHP automatically at https://platform.test
+# Herd serves PHP automatically at https://platform-project.test
 php artisan test --compact   # 38 passing
 php artisan migrate:fresh --seed   # rebuild the demo workspace anytime
 ```
@@ -121,7 +121,7 @@ All integration goes through the **supported surfaces** (User-model traits, name
 ## ✅ Definition of done
 
 - [x] `php artisan migrate:fresh --seed` runs clean and populates the demo
-- [x] `npm run build` succeeds; app boots at https://platform.test with no errors
+- [x] `npm run build` succeeds; app boots at https://platform-project.test with no errors
 - [x] Both demo logins work and land in a full, populated app
 - [x] Landing, board (working drag-and-drop), slide-over, ⌘K, pricing, changelog, blog, profile, notifications, settings, `/admin` all function
 - [x] Every DevDojo package is visibly used
