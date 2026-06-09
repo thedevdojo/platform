@@ -34,12 +34,17 @@
 @endphp
 
 <span
-    {{ $attributes->merge(['class' => 'relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full font-semibold text-white '.($sizes[$size] ?? $sizes['md']).' '.($isImage ? 'bg-elevated' : $tone).' '.($ring ? 'ring-2 ring-canvas' : '')]) }}
+    {{ $attributes->merge(['class' => 'relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full font-semibold text-white '.($sizes[$size] ?? $sizes['md']).' '.$tone.' '.($ring ? 'ring-2 ring-canvas' : '')]) }}
     title="{{ $name }}"
 >
+    <span aria-hidden="true">{{ $initials }}</span>
     @if ($isImage)
-        <img src="{{ $src }}" alt="{{ $name }}" class="size-full object-cover" loading="lazy" />
-    @else
-        {{ $initials }}
+        <img
+            src="{{ $src }}"
+            alt="{{ $name }}"
+            class="absolute inset-0 size-full object-cover"
+            loading="lazy"
+            onerror="this.remove()"
+        />
     @endif
 </span>
