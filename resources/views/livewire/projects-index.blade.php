@@ -246,7 +246,7 @@ new class extends Component
             <span class="mx-auto grid size-12 place-items-center rounded-xl bg-accent-soft text-accent"><x-icon name="zap" class="size-6" /></span>
             <h3 class="mt-4 text-lg font-semibold text-fg">You've hit your plan limit</h3>
             <p class="mt-2 text-[14px] text-muted text-pretty">
-                The Free plan includes {{ $this->projectLimit }} {{ \Illuminate\Support\Str::plural('project', $this->projectLimit) }}.
+                The Free plan includes {{ $this->projectLimit }} {{ \Illuminate\Support\Str::plural('project', (int) $this->projectLimit) }}.
                 Upgrade to Pro for unlimited projects and more seats.
             </p>
             <div class="mt-6 flex justify-center gap-2">
