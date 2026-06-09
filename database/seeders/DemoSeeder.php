@@ -7,6 +7,7 @@ use App\Enums\TicketStatus;
 use App\Models\Article;
 use App\Models\ArticleCategory;
 use App\Models\Customer;
+use App\Models\Invite;
 use App\Models\SavedReply;
 use App\Models\Tag;
 use App\Models\Ticket;
@@ -40,6 +41,12 @@ class DemoSeeder extends Seeder
         $this->seedKnowledgeBase($agents);
         $this->seedChangelog();
         $this->seedBlog($alex);
+
+        // A pending invite so Settings → Team demonstrates the flow.
+        Invite::firstOrCreate(
+            ['email' => 'taylor@nimbus.test'],
+            ['token' => Str::random(48), 'role' => 'agent', 'invited_by' => $alex->id, 'expires_at' => now()->addDays(6)],
+        );
     }
 
     /**
@@ -91,6 +98,8 @@ class DemoSeeder extends Seeder
             $user->setProfileKeyValue('about', $bio);
             $user->setProfileKeyValue('location', fake()->randomElement(['San Francisco, CA', 'Brooklyn, NY', 'Austin, TX', 'London, UK', 'Lisbon, PT', 'Toronto, CA']), 'TextInput');
 
+            $user->assignRole('agent');
+
             $agents[$key] = $user;
         }
 
@@ -99,7 +108,7 @@ class DemoSeeder extends Seeder
 
     protected function setupBilling(User $alex): void
     {
-        $alex->syncRoles(['admin', 'pro']);
+        $alex->syncRoles(['admin', 'agent', 'pro']);
 
         $pro = Plan::where('name', 'Pro')->first();
 

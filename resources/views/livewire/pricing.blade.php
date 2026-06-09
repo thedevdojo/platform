@@ -25,7 +25,7 @@ new class extends Component
     public function choose(int $planId)
     {
         if (! auth()->check()) {
-            return $this->redirect(route('register'), navigate: true);
+            return $this->redirect(route('login'), navigate: true);
         }
 
         $user = auth()->user();
@@ -159,7 +159,7 @@ new class extends Component
                             @endif
                         </button>
                     @else
-                        <a href="{{ route('register') }}" wire:navigate class="btn {{ $popular ? 'btn-primary' : 'btn-secondary' }} mt-6 w-full">
+                        <a href="{{ route('login') }}" wire:navigate class="btn {{ $popular ? 'btn-primary' : 'btn-secondary' }} mt-6 w-full">
                             {{ (int) $plan->monthly_price === 0 ? 'Start free' : 'Get started' }}
                         </a>
                     @endauth

@@ -40,7 +40,7 @@
                         </a>
                     @else
                         <a href="{{ route('login') }}" class="btn btn-ghost btn-sm hidden sm:inline-flex">Sign in</a>
-                        <a href="{{ route('register') }}" class="btn btn-primary btn-sm">Get started</a>
+                        <a href="{{ route('login') }}" class="btn btn-primary btn-sm">Try the demo</a>
                     @endauth
                 </div>
             </div>
@@ -75,7 +75,7 @@
                             <li><a href="{{ route('help.index') }}" class="transition-colors hover:text-fg" wire:navigate>Help Center</a></li>
                             <li><a href="{{ route('help.contact') }}" class="transition-colors hover:text-fg" wire:navigate>Contact support</a></li>
                             <li><a href="{{ route('blog.index') }}" class="transition-colors hover:text-fg" wire:navigate>Blog</a></li>
-                            <li><a href="{{ route('register') }}" class="transition-colors hover:text-fg" wire:navigate>Get started</a></li>
+                            <li><a href="{{ route('login') }}" class="transition-colors hover:text-fg" wire:navigate>Try the demo</a></li>
                         </ul>
                     </div>
                     <div>

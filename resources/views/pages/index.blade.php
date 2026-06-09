@@ -36,7 +36,7 @@ name('home');
                 </p>
 
                 <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
-                    <a href="{{ route('register') }}" class="btn btn-primary btn-lg">
+                    <a href="{{ route('login') }}" class="btn btn-primary btn-lg">
                         Start for free <x-icon name="arrow-right" class="size-4" />
                     </a>
                     <a href="{{ route('login') }}" class="btn btn-secondary btn-lg">
@@ -281,7 +281,7 @@ name('home');
                     Set up Deskly in five minutes. Import nothing, configure nothing, answer everything.
                 </p>
                 <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-                    <a href="{{ route('register') }}" class="btn btn-lg bg-canvas text-fg hover:bg-canvas/90">
+                    <a href="{{ route('login') }}" class="btn btn-lg bg-canvas text-fg hover:bg-canvas/90">
                         Start for free <x-icon name="arrow-right" class="size-4" />
                     </a>
                     <a href="{{ route('pricing') }}" wire:navigate class="btn btn-lg border border-canvas/20 text-canvas hover:bg-canvas/10">

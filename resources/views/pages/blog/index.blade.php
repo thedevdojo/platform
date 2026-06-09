@@ -124,7 +124,7 @@ name('blog.index');
                 <p class="mt-1.5 max-w-sm text-[14px] text-muted">
                     The first story is on its way. Check back soon for writing from the Deskly team.
                 </p>
-                <a href="{{ route('register') }}" wire:navigate class="btn btn-secondary btn-sm mt-6">
+                <a href="{{ route('login') }}" wire:navigate class="btn btn-secondary btn-sm mt-6">
                     Get started <x-icon name="arrow-right" class="size-4" />
                 </a>
             </div>

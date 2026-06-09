@@ -91,7 +91,7 @@ name('changelog.index');
                 <p class="mt-1.5 max-w-sm text-[14px] text-muted">
                     We're heads-down building. New releases will appear here the moment they go live.
                 </p>
-                <a href="{{ route('register') }}" wire:navigate class="btn btn-secondary btn-sm mt-6">
+                <a href="{{ route('login') }}" wire:navigate class="btn btn-secondary btn-sm mt-6">
                     Get started <x-icon name="arrow-right" class="size-4" />
                 </a>
             </div>

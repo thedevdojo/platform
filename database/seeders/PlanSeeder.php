@@ -10,7 +10,7 @@ class PlanSeeder extends Seeder
 {
     public function run(): void
     {
-        foreach (['admin', 'registered', 'pro', 'scale'] as $role) {
+        foreach (['admin', 'agent', 'registered', 'pro', 'scale'] as $role) {
             Role::firstOrCreate(['name' => $role, 'guard_name' => 'web']);
         }
 

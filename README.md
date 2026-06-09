@@ -39,6 +39,28 @@ environments, `/_demo-login` signs you in as the demo account instantly.
 | Settings | `/settings/*` | Account, security (2FA), saved replies, notification prefs, billing, team |
 | Everywhere | ⌘K | Command palette: tickets, customers, navigation |
 
+## Roles & access
+
+Deskly is **invite-only**: public registration is closed, except on a fresh install with
+zero users — the first person to register automatically becomes an admin.
+
+| Capability | agent | admin |
+| --- | --- | --- |
+| Inbox, tickets, customers, reports, KB writing & publishing | ✓ | ✓ |
+| KB article deletion | — | ✓ |
+| Team settings (invites, promote/demote, remove) | — | ✓ |
+| Billing & plan, feature toggles (`/foundation/setup`) | — | ✓ |
+
+**Inviting teammates:** Settings → Team → enter an email and role → copy the signed invite
+link (7-day expiry, revocable). The link opens a register page locked to that email and
+assigns the role on acceptance. In production you'd also email the link — the seam is
+marked in `resources/views/livewire/settings/team.blade.php`.
+
+**Customers never register.** They submit tickets through the public form at
+`/help/contact` (or agents add them manually from `/customers`). Submissions find-or-create
+the customer by email and open an unassigned `web`-channel ticket; agent replies would go
+out by email in production (seam marked in the contact component).
+
 ## Domain model
 
 `Ticket` (status, priority, channel, SLA helpers) → `Customer`, `Message` (reply/note),
