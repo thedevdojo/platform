@@ -13,7 +13,7 @@ new class extends Component
         $user = auth()->user();
 
         return [
-            'plans' => Plan::getActivePlans(),
+            'plans' => Plan::where('active', true)->with('role')->orderBy('sort_order')->orderBy('id')->get(),
             'currentPlanId' => $user && $user->subscriber() ? $user->latestSubscription()?->plan_id : null,
             'isFreeUser' => $user ? ! $user->subscriber() : false,
         ];

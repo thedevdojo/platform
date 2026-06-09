@@ -8,7 +8,7 @@ name('admin.plans');
 ?>
 
 @php
-    $plans = \Devdojo\Billing\Models\Plan::getActivePlans();
+    $plans = \Devdojo\Billing\Models\Plan::where('active', true)->orderBy('sort_order')->orderBy('id')->get();
 
     $formatLimit = function ($plan, string $key): string {
         $limits = $plan->limits ?? [];
