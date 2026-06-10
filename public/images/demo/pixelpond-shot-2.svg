@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700">
+  <rect width="1200" height="700" rx="20" fill="hsl(115 30% 98%)"/>
+  <rect width="1200" height="64" rx="20" fill="hsl(115 25% 94%)"/>
+  <rect y="40" width="1200" height="24" fill="hsl(115 25% 94%)"/>
+  <circle cx="42" cy="32" r="7" fill="#f87171"/>
+  <circle cx="68" cy="32" r="7" fill="#fbbf24"/>
+  <circle cx="94" cy="32" r="7" fill="#34d399"/>
+  <rect x="420" y="16" width="360" height="32" rx="16" fill="hsl(115 20% 99%)"/>
+  <text x="600" y="37" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="hsl(115 15% 60%)" text-anchor="middle">Pixelpond.app</text>
+  <rect x="60" y="170" width="250" height="430" rx="16" fill="hsl(115 65% 93%)"/>
+  <rect x="90" y="210" width="190" height="18" rx="9" fill="hsl(115 50% 76%)"/>
+  <rect x="90" y="252" width="150" height="14" rx="7" fill="hsl(115 45% 84%)"/>
+  <rect x="90" y="286" width="170" height="14" rx="7" fill="hsl(115 45% 84%)"/>
+  <rect x="90" y="320" width="130" height="14" rx="7" fill="hsl(115 45% 84%)"/>
+  <rect x="350" y="170" width="370" height="200" rx="16" fill="#fff" stroke="hsl(115 25% 88%)"/>
+  <rect x="740" y="170" width="370" height="200" rx="16" fill="#fff" stroke="hsl(115 25% 88%)"/>
+  <path d="M380 330 Q 450 240 520 290 T 690 230" fill="none" stroke="hsl(115 70% 50%)" stroke-width="5" stroke-linecap="round"/>
+  <path d="M770 330 Q 840 260 910 300 T 1080 250" fill="none" stroke="hsl(115 50% 70%)" stroke-width="5" stroke-linecap="round"/>
+  <rect x="350" y="400" width="760 " height="200" rx="16" fill="#fff" stroke="hsl(115 25% 88%)"/>
+  <rect x="385" y="440" width="500" height="16" rx="8" fill="hsl(115 30% 88%)"/>
+  <rect x="385" y="478" width="430" height="16" rx="8" fill="hsl(115 30% 90%)"/>
+  <rect x="385" y="516" width="470" height="16" rx="8" fill="hsl(115 30% 90%)"/>
+  <circle cx="1040" cy="490" r="44" fill="hsl(115 70% 50%)" opacity="0.9"/>
+</svg>
