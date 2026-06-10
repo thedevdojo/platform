@@ -2,24 +2,27 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Devdojo\Foundation\Models\FoundationSetting;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
      * Seed the application's database.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Sync Foundation feature flags from the config defaults.
+        foreach (config('foundation.features', []) as $feature => $enabled) {
+            FoundationSetting::updateOrCreate(
+                ['key' => 'features.'.$feature],
+                ['value' => $enabled ? '1' : '0'],
+            );
+        }
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        $this->call([
+            PlanSeeder::class,
+            DemoSeeder::class,
         ]);
     }
 }

@@ -15,7 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        // Free up the <x-icon> tag for the app's own icon component
+        // (blade-icons would otherwise claim it for its default Svg component).
+        config(['blade-icons.components.default' => 'svg-icon']);
     }
 
     /**
