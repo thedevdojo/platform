@@ -32,7 +32,7 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
-            'avatar' => 'https://api.dicebear.com/9.x/glass/svg?seed='.urlencode($name),
+            'avatar' => 'https://api.dicebear.com/9.x/notionists/svg?seed='.urlencode($name).'&backgroundColor=ffdfbf,ffd5dc,c9f7d4,b6e3f4,c0aede&radius=50',
             'title' => fake()->jobTitle(),
             'remember_token' => Str::random(10),
         ];

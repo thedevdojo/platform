@@ -14,7 +14,7 @@ name('products.edit');
 @endphp
 
 <x-layouts.app :title="'Edit '.$product->name">
-    <div class="mx-auto max-w-2xl px-4 py-10 sm:px-6">
+    <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <a href="{{ route('dashboard') }}" wire:navigate class="inline-flex items-center gap-1.5 text-[13px] font-medium text-muted transition-colors hover:text-fg">
             <x-icon name="chevron-left" class="size-4" /> Back to dashboard
         </a>

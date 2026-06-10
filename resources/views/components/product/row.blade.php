@@ -5,26 +5,26 @@
     'showDate' => false,
 ])
 
-<article class="group relative flex items-center gap-3 rounded-xl border border-transparent px-2 py-3 transition-all duration-150 hover:border-line hover:bg-surface hover:shadow-soft sm:gap-4 sm:px-3">
+<article {{ $attributes->merge(['class' => 'product-row group relative']) }}>
     @if (! is_null($rank))
         <span class="rank-num hidden sm:block">{{ $rank }}</span>
     @endif
 
-    <x-product.logo :product="$product" size="md" />
+    <x-product.logo :product="$product" size="lg" class="shadow-[0_10px_22px_-16px_rgba(30,25,16,0.55)] transition-transform duration-200 group-hover:-translate-y-0.5" />
 
     <div class="min-w-0 flex-1">
-        <h3 class="flex items-baseline gap-2 text-[15px] font-bold text-fg">
+        <h3 class="flex min-w-0 items-baseline gap-2 text-[17px] font-semibold text-fg sm:text-[16px]">
             <a href="{{ route('products.show', ['product' => $product]) }}" wire:navigate class="truncate after:absolute after:inset-0 after:content-['']">
                 {{ $product->name }}
             </a>
             @if ($product->featured)
-                <span class="relative z-10 inline-flex items-center gap-1 text-[11px] font-semibold text-gold" title="Featured launch">
+                <span class="featured-label relative z-10" title="Featured launch">
                     <x-icon name="sparkle" class="size-3.5" /> Featured
                 </span>
             @endif
         </h3>
-        <p class="mt-0.5 truncate text-[13.5px] text-muted">{{ $product->tagline }}</p>
-        <div class="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[12px] text-subtle">
+        <p class="mt-1 truncate text-base text-muted sm:text-[14px]">{{ $product->tagline }}</p>
+        <div class="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-sm text-muted sm:text-[13px]">
             <span class="inline-flex items-center gap-1">
                 <x-icon name="message" class="size-3.5" /> {{ $product->comments_count }}
             </span>
@@ -37,7 +37,7 @@
                 <span>{{ $product->launched_at->format('M j, Y') }}</span>
             @endif
             @foreach ($product->topics->take(2) as $topic)
-                <a href="{{ route('topics.show', ['topic' => $topic]) }}" wire:navigate class="relative z-10 transition-colors hover:text-accent">
+                <a href="{{ route('topics.show', ['topic' => $topic]) }}" wire:navigate class="product-topic-chip relative z-10">
                     #{{ $topic->name }}
                 </a>
             @endforeach

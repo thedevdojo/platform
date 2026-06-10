@@ -21,7 +21,7 @@
 </script>
 
 <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
-<link href="https://fonts.bunny.net/css?family=schibsted-grotesk:400,500,600,700,800|instrument-serif:400,400i|spline-sans-mono:400,500,600" rel="stylesheet">
+<link href="https://fonts.bunny.net/css?family=manrope:400,500,600,700,800|newsreader:400,500,600,700,400i,600i|spline-sans-mono:400,500,600" rel="stylesheet">
 
 <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
 

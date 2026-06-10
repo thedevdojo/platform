@@ -12,7 +12,7 @@ name('admin.products');
 ?>
 
 <x-layouts.app title="Products · Admin">
-    <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <h1 class="text-2xl font-extrabold tracking-tight text-fg">Admin</h1>
         <p class="mt-1 text-[14px] text-muted">Keep an eye on launches, hunters, and content.</p>
         <div class="mt-6">

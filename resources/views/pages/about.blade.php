@@ -21,7 +21,7 @@ name('about');
         <div class="absolute -top-40 left-1/2 h-96 w-[44rem] -translate-x-1/2 rounded-full bg-accent/10 blur-3xl"></div>
         <div class="absolute inset-0 bg-noise"></div>
 
-        <div class="relative mx-auto max-w-3xl px-4 pb-20 pt-16 text-center sm:px-6 sm:pt-24">
+        <div class="relative mx-auto max-w-7xl px-4 pb-20 pt-16 text-center sm:px-6 sm:pt-24 lg:px-8">
             <div class="stagger flex flex-col items-center">
                 <span class="badge bg-surface/80 py-1 shadow-soft">
                     <x-icon name="compass" class="size-3.5 text-accent" />
@@ -51,7 +51,7 @@ name('about');
     </section>
 
     {{-- ============================== Three steps ============================== --}}
-    <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+    <section class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center">
             <p class="font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-accent">From idea to front page</p>
             <h2 class="mt-3 text-balance text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">
@@ -115,7 +115,7 @@ name('about');
 
     {{-- ============================== Makers / Hunters split ============================== --}}
     <section class="border-y border-line bg-canvas-subtle">
-        <div class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
             <div class="mx-auto max-w-2xl text-center">
                 <h2 class="text-balance text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">
                     Two sides of <span class="font-serif font-normal italic text-accent">every launch</span>
@@ -197,7 +197,7 @@ name('about');
     </section>
 
     {{-- ============================== Stats band ============================== --}}
-    <section class="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:px-8">
+    <section class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
         <div class="card relative overflow-hidden bg-fg p-10 text-canvas sm:p-14">
             <div class="absolute -right-16 -top-16 size-56 rounded-full bg-accent/25 blur-3xl"></div>
             <div class="absolute -bottom-20 -left-16 size-56 rounded-full bg-accent/15 blur-3xl"></div>
@@ -228,7 +228,7 @@ name('about');
     </section>
 
     {{-- ============================== FAQ ============================== --}}
-    <section class="mx-auto max-w-3xl px-4 pb-24 sm:px-6">
+    <section class="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
         <div class="text-center">
             <p class="font-mono text-[12px] font-semibold uppercase tracking-[0.2em] text-accent">Good questions</p>
             <h2 class="mt-3 text-balance text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">
@@ -272,7 +272,7 @@ name('about');
         <div class="absolute -bottom-44 left-1/2 h-96 w-[46rem] -translate-x-1/2 rounded-full bg-accent/15 blur-3xl"></div>
         <div class="absolute inset-0 bg-noise"></div>
 
-        <div class="relative mx-auto max-w-3xl px-4 py-24 text-center sm:px-6 sm:py-28">
+        <div class="relative mx-auto max-w-7xl px-4 py-24 text-center sm:px-6 sm:py-28 lg:px-8">
             <span class="badge mx-auto bg-surface/80 py-1 shadow-soft">
                 <span class="inline-block size-2 rounded-full bg-accent animate-pulse-dot"></span>
                 <span class="font-semibold text-fg">The next hunt starts at midnight</span>

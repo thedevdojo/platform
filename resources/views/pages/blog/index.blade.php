@@ -28,7 +28,7 @@ name('blog.index');
         <div class="absolute -top-40 left-1/2 h-80 w-[40rem] -translate-x-1/2 rounded-full bg-accent/10 blur-3xl"></div>
         <div class="absolute inset-0 bg-noise"></div>
 
-        <div class="relative mx-auto max-w-3xl px-4 pb-14 pt-16 text-center sm:px-6 sm:pt-20">
+        <div class="relative mx-auto max-w-7xl px-4 pb-14 pt-16 text-center sm:px-6 sm:pt-20 lg:px-8">
             <div class="stagger flex flex-col items-center">
                 <span class="badge bg-surface/80 py-1 shadow-soft">
                     <x-icon name="book" class="size-3.5 text-accent" />
@@ -46,7 +46,7 @@ name('blog.index');
     </section>
 
     {{-- ===================== Posts ===================== --}}
-    <section class="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+    <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         @if ($posts->isNotEmpty())
             {{-- featured story --}}
             @if ($featured)

@@ -35,7 +35,7 @@ name('admin.index');
 @endphp
 
 <x-layouts.app title="Admin">
-    <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+    <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
                 <h1 class="text-2xl font-extrabold tracking-tight text-fg">Admin</h1>

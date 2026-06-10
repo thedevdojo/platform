@@ -15,14 +15,6 @@
         '2xl' => 'size-20 text-2xl',
     ];
 
-    // Deterministic background from the name.
-    $palette = [
-        'bg-indigo-500/90', 'bg-violet-500/90', 'bg-emerald-500/90', 'bg-amber-500/90',
-        'bg-rose-500/90', 'bg-sky-500/90', 'bg-fuchsia-500/90', 'bg-teal-500/90',
-        'bg-orange-500/90', 'bg-cyan-500/90',
-    ];
-    $tone = $palette[crc32($name ?: 'U') % count($palette)];
-
     $initials = collect(preg_split('/\s+/', trim($name)))
         ->filter()
         ->take(2)
@@ -30,21 +22,25 @@
         ->implode('');
     $initials = $initials !== '' ? $initials : 'U';
 
-    $isImage = filled($src) && \Illuminate\Support\Str::startsWith($src, ['http://', 'https://', '/']);
+    $providedSrc = filled($src) ? (string) $src : null;
+    $hasProvidedImage = filled($providedSrc) && \Illuminate\Support\Str::startsWith($providedSrc, ['http://', 'https://', '/']);
+    $isDiceBearImage = filled($providedSrc) && \Illuminate\Support\Str::contains($providedSrc, 'api.dicebear.com');
+    $avatarSeed = trim($name) !== '' ? $name : 'Hunted User';
+    $avatarPalette = 'ffdfbf,ffd5dc,c9f7d4,b6e3f4,c0aede';
+    $diceBearAvatar = 'https://api.dicebear.com/9.x/notionists/svg?seed='.urlencode($avatarSeed).'&backgroundColor='.$avatarPalette.'&radius=50';
+    $avatarSrc = $hasProvidedImage && ! $isDiceBearImage ? $providedSrc : $diceBearAvatar;
 @endphp
 
 <span
-    {{ $attributes->merge(['class' => 'relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full font-semibold text-white '.($sizes[$size] ?? $sizes['md']).' '.$tone.' '.($ring ? 'ring-2 ring-canvas' : '')]) }}
+    {{ $attributes->merge(['class' => 'relative inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-[#ffdfbf] font-semibold text-[#7a4a2a] outline-1 -outline-offset-1 outline-black/5 '.($sizes[$size] ?? $sizes['md']).' '.($ring ? 'ring-4 ring-canvas' : '')]) }}
     title="{{ $name }}"
 >
     <span aria-hidden="true">{{ $initials }}</span>
-    @if ($isImage)
-        <img
-            src="{{ $src }}"
-            alt="{{ $name }}"
-            class="absolute inset-0 size-full object-cover"
-            loading="lazy"
-            onerror="this.remove()"
-        />
-    @endif
+    <img
+        src="{{ $avatarSrc }}"
+        alt="{{ $name }}"
+        class="absolute inset-0 size-full bg-[#ffdfbf] object-cover"
+        loading="lazy"
+        onerror="this.remove()"
+    />
 </span>

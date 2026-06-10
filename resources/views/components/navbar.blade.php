@@ -5,11 +5,11 @@
 <header
     x-data="{ scrolled: false, mobileOpen: false }"
     @scroll.window="scrolled = window.scrollY > 8"
-    class="sticky top-0 z-50 transition-all duration-300"
-    :class="scrolled || mobileOpen ? 'glass border-b border-line' : 'border-b border-transparent'"
+    class="sticky top-0 z-50 border-b border-line bg-canvas/90 backdrop-blur-xl transition-shadow duration-300"
+    :class="scrolled || mobileOpen ? 'shadow-[0_1px_0_rgba(30,25,16,0.04),0_14px_34px_-28px_rgba(30,25,16,0.34)]' : ''"
 >
-    <div class="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:px-6 lg:px-8">
-        <a href="{{ route('home') }}" class="flex shrink-0 items-center" wire:navigate.hover>
+    <div class="mx-auto flex h-[4.5rem] max-w-7xl items-center gap-3 px-4 sm:px-6 lg:px-8">
+        <a href="{{ route('home') }}" aria-label="Homepage" class="flex shrink-0 items-center" wire:navigate.hover>
             <x-logo />
         </a>
 
@@ -17,21 +17,22 @@
         <button
             type="button"
             @click="$store.search.show()"
-            class="ml-2 hidden h-9 w-56 items-center gap-2 rounded-full border border-line-strong bg-surface px-3.5 text-[13px] text-subtle transition-all hover:border-line-strong hover:shadow-soft lg:flex xl:w-72"
+            class="ml-2 hidden h-11 w-[22rem] items-center gap-3 rounded-[15px] border border-line-strong bg-surface px-4 text-[14px] text-subtle shadow-[0_1px_2px_rgba(30,25,16,0.04)] transition-all hover:border-accent-line hover:shadow-soft lg:flex xl:w-[29rem]"
         >
             <x-icon name="search" class="size-4" />
-            <span class="flex-1 text-left">Search products…</span>
+            <span class="flex-1 text-left">Search products, makers, topics...</span>
             <span class="kbd">⌘K</span>
         </button>
 
-        <nav class="ml-auto hidden items-center gap-0.5 md:flex">
-            <a href="{{ route('home') }}" class="nav-item {{ $isActive('/') ? 'active' : '' }}" wire:navigate.hover>Launches</a>
-            <a href="{{ route('topics.index') }}" class="nav-item {{ $isActive('topics', 'topics/*') ? 'active' : '' }}" wire:navigate.hover>Topics</a>
-            <a href="{{ route('leaderboard') }}" class="nav-item {{ $isActive('leaderboard') ? 'active' : '' }}" wire:navigate.hover>Leaderboard</a>
-            <a href="{{ route('about') }}" class="nav-item {{ $isActive('about') ? 'active' : '' }}" wire:navigate.hover>About</a>
+        <nav class="ml-auto hidden h-full items-center gap-7 lg:flex">
+            <a href="{{ route('home') }}" class="top-nav-item {{ $isActive('/') ? 'active' : '' }}" wire:navigate.hover>Launches</a>
+            <a href="{{ route('topics.index') }}" class="top-nav-item {{ $isActive('topics', 'topics/*') ? 'active' : '' }}" wire:navigate.hover>Topics</a>
+            <a href="{{ route('leaderboard') }}" class="top-nav-item {{ $isActive('leaderboard') ? 'active' : '' }}" wire:navigate.hover>Makers</a>
+            <a href="{{ route('about') }}" class="top-nav-item {{ $isActive('about') ? 'active' : '' }}" wire:navigate.hover>About</a>
+            <a href="{{ route('changelog.index') }}" class="top-nav-item {{ $isActive('changelog') ? 'active' : '' }}" wire:navigate.hover>Changelog</a>
         </nav>
 
-        <div class="ml-auto flex items-center gap-1.5 md:ml-3">
+        <div class="ml-auto flex items-center gap-2 lg:ml-3">
             <button type="button" @click="$store.search.show()" class="btn btn-ghost btn-sm !px-2 lg:hidden" aria-label="Search">
                 <x-icon name="search" class="size-[18px]" />
             </button>
@@ -82,13 +83,13 @@
                 </div>
             @else
                 <a href="{{ route('login') }}" class="btn btn-ghost btn-sm hidden sm:inline-flex">Sign in</a>
-                <a href="{{ route('register') }}" class="btn btn-primary btn-sm">
+                <a href="{{ route('register') }}" class="btn btn-primary btn-sm pl-2.5 pr-3.5">
                     <x-icon name="plus" class="size-4" /> Submit
                 </a>
             @endauth
 
             {{-- Mobile menu toggle --}}
-            <button type="button" @click="mobileOpen = !mobileOpen" class="btn btn-ghost btn-sm !px-2 md:hidden" aria-label="Menu">
+            <button type="button" @click="mobileOpen = !mobileOpen" class="btn btn-ghost btn-sm !px-2 lg:hidden" aria-label="Menu">
                 <span x-show="!mobileOpen"><x-icon name="list" class="size-5" /></span>
                 <span x-show="mobileOpen" x-cloak><x-icon name="x" class="size-5" /></span>
             </button>
@@ -102,13 +103,14 @@
         x-transition:enter="transition ease-out duration-150"
         x-transition:enter-start="opacity-0 -translate-y-2"
         x-transition:enter-end="opacity-100 translate-y-0"
-        class="border-t border-line px-4 pb-4 pt-2 md:hidden"
+        class="border-t border-line px-4 pb-4 pt-2 lg:hidden"
     >
         <nav class="flex flex-col gap-0.5">
             <a href="{{ route('home') }}" class="nav-item !rounded-lg {{ $isActive('/') ? 'active' : '' }}" wire:navigate>Launches</a>
             <a href="{{ route('topics.index') }}" class="nav-item !rounded-lg {{ $isActive('topics', 'topics/*') ? 'active' : '' }}" wire:navigate>Topics</a>
-            <a href="{{ route('leaderboard') }}" class="nav-item !rounded-lg {{ $isActive('leaderboard') ? 'active' : '' }}" wire:navigate>Leaderboard</a>
+            <a href="{{ route('leaderboard') }}" class="nav-item !rounded-lg {{ $isActive('leaderboard') ? 'active' : '' }}" wire:navigate>Makers</a>
             <a href="{{ route('about') }}" class="nav-item !rounded-lg {{ $isActive('about') ? 'active' : '' }}" wire:navigate>About</a>
+            <a href="{{ route('changelog.index') }}" class="nav-item !rounded-lg {{ $isActive('changelog') ? 'active' : '' }}" wire:navigate>Changelog</a>
             @auth
                 <a href="{{ route('submit') }}" class="btn btn-primary mt-2" wire:navigate><x-icon name="plus" class="size-4" /> Submit a product</a>
             @else

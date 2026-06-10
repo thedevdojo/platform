@@ -13,7 +13,7 @@ name('topics.show');
 
 <x-layouts.app :title="$topic->name.' launches'" :description="$topic->tagline">
     <div class="border-b border-line bg-canvas-subtle">
-        <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <a href="{{ route('topics.index') }}" wire:navigate class="inline-flex items-center gap-1.5 text-[13px] font-medium text-muted transition-colors hover:text-fg">
                 <x-icon name="chevron-left" class="size-4" /> All topics
             </a>
@@ -33,7 +33,7 @@ name('topics.show');
         </div>
     </div>
 
-    <div class="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <livewire:topic-feed :topic="$topic" />
     </div>
 </x-layouts.app>

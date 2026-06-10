@@ -71,7 +71,7 @@ class DemoSeeder extends Seeder
                 'email' => $email,
                 'username' => $username,
                 'title' => $title,
-                'avatar' => 'https://api.dicebear.com/9.x/notionists-neutral/svg?seed='.urlencode($username.'-hunted'),
+                'avatar' => 'https://api.dicebear.com/9.x/notionists/svg?seed='.urlencode($name).'&backgroundColor=ffdfbf,ffd5dc,c9f7d4,b6e3f4,c0aede&radius=50',
                 'social_links' => [
                     'website' => $i % 3 === 0 ? 'https://'.$username.'.dev' : null,
                     'github' => $i % 2 === 0 ? 'https://github.com/'.$username : null,

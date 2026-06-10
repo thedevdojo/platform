@@ -55,7 +55,7 @@ name('profile.show');
         {{-- Header band --}}
         <div class="relative overflow-hidden border-b border-line bg-canvas-subtle">
             <div class="absolute inset-0 bg-dotgrid [mask-image:radial-gradient(ellipse_60%_120%_at_50%_0%,black_10%,transparent_70%)]"></div>
-            <div class="relative mx-auto max-w-4xl px-4 py-12 sm:px-6">
+            <div class="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
                 <div class="flex flex-col items-start gap-6 sm:flex-row sm:items-center">
                     <x-avatar :name="$user->name" :src="$user->avatar" size="2xl" ring class="shadow-soft" />
                     <div class="min-w-0 flex-1">
@@ -101,7 +101,7 @@ name('profile.show');
             </div>
         </div>
 
-        <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6">
+        <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
             @if ($bestProduct)
                 <div class="mb-8 flex items-center gap-2 text-[13px] text-muted">
                     <x-icon name="trophy" class="size-4 text-gold" />

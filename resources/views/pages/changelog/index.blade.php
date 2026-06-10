@@ -17,7 +17,7 @@ name('changelog.index');
         <div class="absolute -top-40 left-1/2 h-80 w-[40rem] -translate-x-1/2 rounded-full bg-accent/10 blur-3xl"></div>
         <div class="absolute inset-0 bg-noise"></div>
 
-        <div class="relative mx-auto max-w-3xl px-4 pb-14 pt-16 text-center sm:px-6 sm:pt-20">
+        <div class="relative mx-auto max-w-7xl px-4 pb-14 pt-16 text-center sm:px-6 sm:pt-20 lg:px-8">
             <div class="stagger flex flex-col items-center">
                 <span class="badge bg-surface/80 py-1 shadow-soft">
                     <span class="inline-block size-2 rounded-full bg-accent animate-pulse-dot"></span>
@@ -35,7 +35,7 @@ name('changelog.index');
     </section>
 
     {{-- ===================== Timeline ===================== --}}
-    <section class="mx-auto max-w-3xl px-4 py-14 sm:px-6">
+    <section class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         @if ($entries->isNotEmpty())
             <ol class="stagger relative space-y-12 before:absolute before:bottom-3 before:left-[7px] before:top-3 before:w-px before:bg-line sm:before:left-[140px]">
                 @foreach ($entries as $entry)

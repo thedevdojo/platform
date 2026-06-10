@@ -8,7 +8,7 @@ name('settings.account');
 ?>
 
 <x-layouts.app title="Account · Settings">
-    <div class="mx-auto max-w-3xl px-4 py-10 sm:px-6">
+    <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <h1 class="text-2xl font-extrabold tracking-tight text-fg">Settings</h1>
         <p class="mt-1 text-[14px] text-muted">Manage your hunter profile and account preferences.</p>
         <div class="mt-6">

@@ -32,7 +32,7 @@ name('products.show');
 @endphp
 
 <x-layouts.app :title="$product->name.' — '.$product->tagline" :description="$product->tagline">
-    <div class="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
 
         @unless ($product->isLive())
             <div class="mb-6 flex items-center gap-3 rounded-xl border border-accent-line bg-accent-soft px-4 py-3 text-sm">

@@ -89,7 +89,7 @@ new class extends Component
         <div class="absolute -top-40 left-1/2 h-80 w-[40rem] -translate-x-1/2 rounded-full bg-accent/10 blur-3xl"></div>
         <div class="absolute inset-0 bg-noise"></div>
 
-        <div class="relative mx-auto max-w-3xl px-4 pb-12 pt-16 text-center sm:px-6 sm:pt-20">
+        <div class="relative mx-auto max-w-7xl px-4 pb-12 pt-16 text-center sm:px-6 sm:pt-20 lg:px-8">
             <div class="stagger flex flex-col items-center">
                 <span class="badge bg-surface/80 py-1 shadow-soft">
                     <x-icon name="zap" class="size-3.5 text-accent" />
@@ -115,7 +115,7 @@ new class extends Component
     </section>
 
     {{-- ===================== Plans ===================== --}}
-    <section class="mx-auto max-w-5xl px-4 py-14 sm:px-6">
+    <section class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div class="grid items-start gap-5 md:grid-cols-3">
             @foreach ($plans as $plan)
                 @php
@@ -207,7 +207,7 @@ new class extends Component
     </section>
 
     {{-- ===================== FAQ ===================== --}}
-    <section class="mx-auto max-w-3xl px-4 pb-24 sm:px-6">
+    <section class="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
         <h2 class="text-center text-3xl font-extrabold tracking-tight text-fg">
             Frequently <span class="font-serif font-normal italic text-accent">asked</span>
         </h2>

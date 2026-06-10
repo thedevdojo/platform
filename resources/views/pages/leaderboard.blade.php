@@ -8,7 +8,7 @@ name('leaderboard');
 
 <x-layouts.app title="Leaderboard" description="The makers and hunters earning the community's upvotes.">
     <div class="border-b border-line bg-canvas-subtle">
-        <div class="mx-auto max-w-4xl px-4 py-12 text-center sm:px-6">
+        <div class="mx-auto max-w-7xl px-4 py-12 text-center sm:px-6 lg:px-8">
             <span class="mx-auto grid size-12 place-items-center rounded-2xl bg-gold/10 text-gold">
                 <x-icon name="trophy" class="size-6" />
             </span>
@@ -17,7 +17,7 @@ name('leaderboard');
         </div>
     </div>
 
-    <div class="mx-auto max-w-4xl px-4 py-10 sm:px-6">
+    <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
         <livewire:leaderboard-list />
     </div>
 </x-layouts.app>
