@@ -29,6 +29,7 @@ class DemoSeeder extends Seeder
         [$alex, $jordan, $maya, $dev, $sam, $riley] = array_values($members);
 
         $this->setupBilling($alex);
+        $this->createTeam($members);
 
         $labels = $this->createLabels();
         $projects = $this->createProjects($alex, $jordan, collect($members));
@@ -91,6 +92,31 @@ class DemoSeeder extends Seeder
         }
 
         return $members;
+    }
+
+    /**
+     * Create the shared Northwind team and put every demo member on it.
+     *
+     * @param  array<string, User>  $members
+     */
+    protected function createTeam(array $members): void
+    {
+        $alex = $members['alex'];
+
+        $team = $alex->ownedTeams()->firstOrCreate(
+            ['name' => 'Northwind'],
+            ['personal_team' => false]
+        );
+
+        $roles = ['jordan' => 'member', 'maya' => 'admin', 'dev' => 'editor', 'sam' => 'editor', 'riley' => 'member'];
+
+        foreach ($roles as $key => $role) {
+            $team->users()->syncWithoutDetaching([$members[$key]->id => ['role' => $role]]);
+        }
+
+        foreach ($members as $member) {
+            $member->forceFill(['current_team_id' => $team->id])->save();
+        }
     }
 
     protected function setupBilling(User $alex): void

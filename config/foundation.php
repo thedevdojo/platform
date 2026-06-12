@@ -21,6 +21,7 @@ return [
         'changelog' => true,
         'notifications' => true,
         'profiles' => true,
+        'teams' => true,
     ],
 
     /*
@@ -34,6 +35,7 @@ return [
         'blog' => ['auth'],
         'profiles' => ['auth'],
         'billing' => ['auth'],
+        'teams' => ['auth'],
     ],
 
 ];

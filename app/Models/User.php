@@ -9,6 +9,7 @@ use Devdojo\Billing\Traits\HasSubscriptions;
 use Devdojo\Changelog\Traits\HasChangelogs;
 use Devdojo\Notifications\Traits\HasNotificationPreferences;
 use Devdojo\Profiles\Traits\HasProfileKeyValues;
+use Devdojo\Teams\Traits\HasTeams;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -24,7 +25,10 @@ class User extends AuthUser
     use HasNotificationPreferences;
     use HasPlanFeatures;
     use HasProfileKeyValues;
-    use HasRoles;
+    use HasRoles, HasTeams {
+        HasTeams::teams insteadof HasRoles;
+        HasRoles::teams as permissionTeams;
+    }
     use HasSubscriptions;
 
     /**
