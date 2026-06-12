@@ -19,9 +19,9 @@ return [
 
     'routes' => [
         'enabled' => true,
-        'path' => 'user/profile',
+        'path' => 'settings',
         'middleware' => ['web', 'auth'],
-        'layout' => 'layouts.app',
+        'layout' => 'layouts.settings',
     ],
 
     /*
@@ -47,7 +47,9 @@ return [
         'two_factor' => true,
         'sessions' => true,
         'delete_account' => true,
-        'billing' => true,
+        // Relay ships its own billing tab (registered as a custom page in
+        // AppServiceProvider) with usage meters and its cancel flow.
+        'billing' => false,
     ],
 
     /*
@@ -104,7 +106,7 @@ return [
     | User Button
     |--------------------------------------------------------------------------
     |
-    | Extra menu items for the <x-profiles::user-button /> dropdown. Each
+    | Extra menu items for the <x-accounts::user-button /> dropdown. Each
     | item: ['label' => 'Dashboard', 'url' => '/dashboard', 'icon' => '<svg…>'].
     |
     */

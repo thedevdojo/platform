@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Older versions of devdojo/profiles stored the user class name in
+     * Older versions of devdojo/accounts stored the user class name in
      * keyvalue_type, but reads go through the morph map ('users'), which
      * made those rows invisible. Normalize them to the mapped alias.
      */

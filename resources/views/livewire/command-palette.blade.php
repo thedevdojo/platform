@@ -19,9 +19,9 @@ $groups = computed(function () {
         ['label' => 'Go to Projects', 'icon' => 'folder', 'href' => route('projects.index'), 'hint' => 'Navigation'],
         Foundation::enabled('notifications') ? ['label' => 'Go to Inbox', 'icon' => 'inbox', 'href' => route('inbox'), 'hint' => 'Navigation'] : null,
         Foundation::enabled('changelog') ? ['label' => 'Go to Changelog', 'icon' => 'megaphone', 'href' => route('changelog.index'), 'hint' => 'Navigation'] : null,
-        ['label' => 'Account settings', 'icon' => 'settings', 'href' => route('settings.account'), 'hint' => 'Settings'],
-        ['label' => 'Notification preferences', 'icon' => 'bell', 'href' => route('settings.notifications'), 'hint' => 'Settings'],
-        Foundation::enabled('billing') ? ['label' => 'Billing & plan', 'icon' => 'credit-card', 'href' => route('settings.billing'), 'hint' => 'Settings'] : null,
+        ['label' => 'Account settings', 'icon' => 'settings', 'href' => route('accounts.show'), 'hint' => 'Settings'],
+        ['label' => 'Notification preferences', 'icon' => 'bell', 'href' => route('accounts.show', 'notifications'), 'hint' => 'Settings'],
+        Foundation::enabled('billing') ? ['label' => 'Billing & plan', 'icon' => 'credit-card', 'href' => route('accounts.show', 'billing'), 'hint' => 'Settings'] : null,
     ])->filter();
 
     if ($q !== '') {

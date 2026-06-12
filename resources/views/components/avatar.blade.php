@@ -30,10 +30,10 @@
         ->implode('');
     $initials = $initials !== '' ? $initials : 'U';
 
-    // Avatars uploaded through devdojo/profiles are stored as paths on the
+    // Avatars uploaded through devdojo/accounts are stored as paths on the
     // public disk (e.g. "avatars/abc.jpg") rather than absolute URLs.
     if (filled($src) && ! \Illuminate\Support\Str::startsWith($src, ['http://', 'https://', 'data:', '/'])) {
-        $src = \Illuminate\Support\Facades\Storage::disk(config('devdojo.profiles.avatar.disk', 'public'))->url($src);
+        $src = \Illuminate\Support\Facades\Storage::disk(config('devdojo.accounts.avatar.disk', 'public'))->url($src);
     }
 
     $isImage = filled($src) && \Illuminate\Support\Str::startsWith($src, ['http://', 'https://', 'data:', '/']);

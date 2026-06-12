@@ -447,6 +447,84 @@
             "time": "2025-09-16T12:23:56+00:00"
         },
         {
+            "name": "devdojo/accounts",
+            "version": "0.0.1",
+            "dist": {
+                "type": "path",
+                "url": "packages/devdojo/accounts",
+                "reference": "de22bcf807a0a5c2fa4a7f729293ce54f98f50e0"
+            },
+            "require": {
+                "illuminate/database": "^10.0|^11.0|^12.0|^13.0",
+                "illuminate/support": "^10.0|^11.0|^12.0|^13.0",
+                "livewire/livewire": "^3.0|^4.0",
+                "php": "^8.2|^8.3|^8.4"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.15",
+                "orchestra/testbench": "^9.0|^10.0",
+                "pestphp/pest": "^3.7",
+                "pestphp/pest-plugin-laravel": "^3.1",
+                "pestphp/pest-plugin-livewire": "^3.0"
+            },
+            "suggest": {
+                "devdojo/auth": "Unlocks connected (social) accounts and two-factor authentication in the Security tab.",
+                "devdojo/billing": "Unlocks the Billing tab (current plan, invoices, customer portal).",
+                "filament/filament": "Required for the HasDynamicFields trait (renders profile fields as Filament form components)."
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Devdojo\\Accounts\\AccountsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Devdojo\\Accounts\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Devdojo\\Accounts\\Tests\\": "tests"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/pest"
+                ],
+                "lint": [
+                    "vendor/bin/pint"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tony Lea",
+                    "email": "tony@devdojo.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Drop-in account management for the TALL stack. A complete, Clerk-style account area — profile details, avatar, email changes, connected accounts, password, two-factor, sessions, and billing — as embeddable Livewire components.",
+            "homepage": "https://github.com/thedevdojo/accounts",
+            "keywords": [
+                "account",
+                "accounts",
+                "devdojo",
+                "laravel",
+                "livewire",
+                "tall-stack",
+                "user-profile"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "devdojo/auth",
             "version": "dev-main",
             "dist": {
@@ -780,15 +858,15 @@
             "dist": {
                 "type": "path",
                 "url": "packages/devdojo/foundation",
-                "reference": "00bcefd799a7d8a58115311da8abdc9785eeb890"
+                "reference": "8607c22b086639248b0b44eb70020b816185ddbb"
             },
             "require": {
+                "devdojo/accounts": "*",
                 "devdojo/auth": "*",
                 "devdojo/billing": "*",
                 "devdojo/blog": "*",
                 "devdojo/changelog": "*",
                 "devdojo/notifications": "*",
-                "devdojo/profiles": "*",
                 "devdojo/teams": "*",
                 "laravel/framework": "^11.0|^12.0|^13.0",
                 "php": "^8.2|^8.3|^8.4"
@@ -816,7 +894,7 @@
                     "role": "Developer"
                 }
             ],
-            "description": "The DevDojo Foundation — auth, billing, blog, changelog, notifications, profiles and teams, bundled.",
+            "description": "The DevDojo Foundation — auth, billing, blog, changelog, notifications and accounts, bundled.",
             "homepage": "https://github.com/thedevdojo/foundation",
             "keywords": [
                 "devdojo",
@@ -871,57 +949,6 @@
                 "devdojo",
                 "laravel",
                 "notifications"
-            ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
-        },
-        {
-            "name": "devdojo/profiles",
-            "version": "0.0.1",
-            "dist": {
-                "type": "path",
-                "url": "packages/devdojo/profiles",
-                "reference": "caf270dd7518ba70f2794c42b90dae32b54a1f06"
-            },
-            "require": {
-                "illuminate/database": "^10.0|^11.0|^12.0|^13.0",
-                "illuminate/support": "^10.0|^11.0|^12.0|^13.0",
-                "php": "^8.2|^8.3|^8.4"
-            },
-            "suggest": {
-                "filament/filament": "Required for the HasDynamicFields trait (renders profile fields as Filament form components)."
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Devdojo\\Profiles\\ProfilesServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Devdojo\\Profiles\\": "src"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Tony Lea",
-                    "email": "tony@devdojo.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "User profiles (dynamic key/value profile fields, social links, privacy) for Laravel applications.",
-            "homepage": "https://github.com/devdojo/profiles",
-            "keywords": [
-                "devdojo",
-                "laravel",
-                "profiles"
             ],
             "transport-options": {
                 "symlink": true,

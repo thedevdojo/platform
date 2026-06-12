@@ -54,11 +54,12 @@ it('renders the core authenticated experience', function (string $route) {
         'projects index' => fn () => route('projects.index'),
         'project board' => fn () => route('projects.show', ['project' => $this->project->id]),
         'inbox' => fn () => route('inbox'),
-        'settings account' => fn () => route('settings.account'),
-        'settings security' => fn () => route('settings.security'),
-        'settings notifications' => fn () => route('settings.notifications'),
-        'settings billing' => fn () => route('settings.billing'),
-        'settings team' => fn () => route('settings.team'),
+        'settings' => fn () => route('accounts.show'),
+        'settings security' => fn () => route('accounts.show', 'security'),
+        'settings public profile' => fn () => route('accounts.show', 'public-profile'),
+        'settings notifications' => fn () => route('accounts.show', 'notifications'),
+        'settings billing' => fn () => route('accounts.show', 'billing'),
+        'settings team' => fn () => route('accounts.show', 'team'),
     ];
 });
 

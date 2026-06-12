@@ -42,7 +42,7 @@ new class extends Component
             $user->clearUserCache();
             $this->dispatch('toast', type: 'success', message: 'You are on the Free plan');
 
-            return $this->redirect(route('settings.billing'), navigate: true);
+            return $this->redirect(route('accounts.show', 'billing'), navigate: true);
         }
 
         Subscription::updateOrCreate(
@@ -63,7 +63,7 @@ new class extends Component
         $user->clearUserCache();
         $this->dispatch('toast', type: 'success', message: 'Welcome to '.$plan->name.'! (test mode — no charge)');
 
-        return $this->redirect(route('settings.billing'), navigate: true);
+        return $this->redirect(route('accounts.show', 'billing'), navigate: true);
     }
 
     protected function syncRole($user, string $role): void

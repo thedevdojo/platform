@@ -20,7 +20,7 @@ return [
         'blog' => true,
         'changelog' => true,
         'notifications' => true,
-        'profiles' => true,
+        'accounts' => true,
         'teams' => true,
     ],
 
@@ -33,7 +33,7 @@ return [
 
     'depends' => [
         'blog' => ['auth'],
-        'profiles' => ['auth'],
+        'accounts' => ['auth'],
         'billing' => ['auth'],
         'teams' => ['auth'],
     ],

@@ -134,7 +134,7 @@
             class="card shadow-pop mb-1.5 p-1"
         >
             <a href="{{ $user?->profileUrl() }}" class="nav-item w-full"><x-icon name="user" class="size-4" /> Your profile</a>
-            <a href="{{ route('settings.account') }}" wire:navigate class="nav-item w-full"><x-icon name="settings" class="size-4" /> Settings</a>
+            <a href="{{ route('accounts.show') }}" wire:navigate class="nav-item w-full"><x-icon name="settings" class="size-4" /> Settings</a>
             <div class="my-1 flex items-center justify-between px-2.5 py-1">
                 <span class="text-[13px] text-muted">Theme</span>
                 <div x-data><x-theme-toggle /></div>

@@ -1,34 +1,47 @@
 <?php
 
 use App\Models\User;
-use Devdojo\Profiles\Models\PendingEmailChange;
+use Devdojo\Accounts\Models\PendingEmailChange;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use Livewire\Livewire;
 
-it('renders the account settings page with the package profile component', function () {
+it('renders the settings area through the package account shell', function () {
     $this->actingAs(User::factory()->create());
 
-    $this->get(route('settings.account'))
+    $this->get(route('accounts.show'))
         ->assertOk()
-        ->assertSeeLivewire('profiles.profile-details')
-        ->assertSeeLivewire('settings.public-profile');
+        ->assertSeeLivewire('accounts.user-profile-page')
+        ->assertSeeLivewire('accounts.profile-details');
 });
 
-it('renders the security settings page with the package security component', function () {
+it('deep-links the package security tab', function () {
     $this->actingAs(User::factory()->create());
 
-    $this->get(route('settings.security'))
+    $this->get(route('accounts.show', 'security'))
         ->assertOk()
-        ->assertSeeLivewire('profiles.security');
+        ->assertSeeLivewire('accounts.security');
 });
 
-it('serves the standalone package account page inside the app layout', function () {
+it('renders the relay-specific tabs as custom pages in the shell', function (string $tab, string $component) {
     $this->actingAs(User::factory()->create());
 
-    $this->get('/user/profile')
+    $this->get(route('accounts.show', $tab))
         ->assertOk()
-        ->assertSeeLivewire('profiles.user-profile-page');
+        ->assertSeeLivewire($component);
+})->with([
+    'public profile' => ['public-profile', 'settings.public-profile'],
+    'notifications' => ['notifications', 'settings.notifications'],
+    'billing' => ['billing', 'settings.billing'],
+    'team' => ['team', 'settings.team'],
+]);
+
+it('shows the relay tabs in the shell navigation', function () {
+    $this->actingAs(User::factory()->create());
+
+    $this->get(route('accounts.show'))
+        ->assertOk()
+        ->assertSeeInOrder(['Profile', 'Security', 'Public profile', 'Notifications', 'Billing', 'Team']);
 });
 
 it('updates the name through the package profile component', function () {
@@ -36,7 +49,7 @@ it('updates the name through the package profile component', function () {
 
     $this->actingAs($user);
 
-    Livewire::test('profiles.profile-details')
+    Livewire::test('accounts.profile-details')
         ->call('openForm', 'profile')
         ->set('name', 'New Name')
         ->call('saveProfile')
@@ -50,7 +63,7 @@ it('updates the username through the package profile component', function () {
 
     $this->actingAs($user);
 
-    Livewire::test('profiles.profile-details')
+    Livewire::test('accounts.profile-details')
         ->call('openForm', 'username')
         ->set('username', 'relay-tester')
         ->call('saveUsername')
@@ -66,7 +79,7 @@ it('requires email verification before swapping the address', function () {
 
     $this->actingAs($user);
 
-    Livewire::test('profiles.profile-details')
+    Livewire::test('accounts.profile-details')
         ->call('openForm', 'email')
         ->set('newEmail', 'after@example.com')
         ->call('requestEmailChange')
@@ -81,7 +94,7 @@ it('updates the password through the package security component', function () {
 
     $this->actingAs($user);
 
-    Livewire::test('profiles.security')
+    Livewire::test('accounts.security')
         ->call('openForm', 'password')
         ->set('current_password', 'old-password-123')
         ->set('password', 'new-password-456')
@@ -97,7 +110,7 @@ it('rejects a password update with the wrong current password', function () {
 
     $this->actingAs($user);
 
-    Livewire::test('profiles.security')
+    Livewire::test('accounts.security')
         ->call('openForm', 'password')
         ->set('current_password', 'not-the-password')
         ->set('password', 'new-password-456')
