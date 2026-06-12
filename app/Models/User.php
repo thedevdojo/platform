@@ -8,6 +8,7 @@ use Devdojo\Billing\Traits\HasPlanFeatures;
 use Devdojo\Billing\Traits\HasSubscriptions;
 use Devdojo\Changelog\Traits\HasChangelogs;
 use Devdojo\Notifications\Traits\HasNotificationPreferences;
+use Devdojo\Profiles\Traits\HasProfile;
 use Devdojo\Profiles\Traits\HasProfileKeyValues;
 use Devdojo\Teams\Traits\HasTeams;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -24,6 +25,7 @@ class User extends AuthUser
     use HasFactory;
     use HasNotificationPreferences;
     use HasPlanFeatures;
+    use HasProfile;
     use HasProfileKeyValues;
     use HasRoles, HasTeams {
         HasTeams::teams insteadof HasRoles;
@@ -132,13 +134,5 @@ class User extends AuthUser
     public function isAdmin(): bool
     {
         return $this->hasRole('admin');
-    }
-
-    /**
-     * Whether a stored avatar value is an absolute URL or root-relative path.
-     */
-    public function hasAvatarImage(): bool
-    {
-        return filled($this->avatar) && Str::startsWith($this->avatar, ['http://', 'https://', '/']);
     }
 }
