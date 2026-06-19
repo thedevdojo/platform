@@ -10,7 +10,7 @@ name('templates');
 
     <section class="relative overflow-hidden">
         <div class="relative mx-auto max-w-6xl px-5 pb-20 pt-16 sm:pt-24">
-            <x-doodle name="plane" class="reveal absolute left-[6%] top-20 size-24 text-ink max-lg:hidden" style="animation-delay: 500ms" />
+            <x-doodle name="plane" class="reveal absolute left-[2%] top-20 h-12 w-48 -rotate-6 text-ink max-lg:hidden" style="animation-delay: 500ms" />
             <x-doodle name="sparkle" class="reveal absolute right-[12%] top-12 size-10 rotate-45 text-ink max-lg:hidden" style="animation-delay: 600ms" />
             <x-doodle name="squiggle" class="reveal absolute right-[7%] top-36 size-12 text-accent max-lg:hidden" style="animation-delay: 700ms" />
             <div class="mx-auto max-w-2xl text-center">

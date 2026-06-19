@@ -204,7 +204,7 @@ new class extends Component
                 <div class="card relative overflow-hidden rounded-2xl px-6 py-16 text-center">
                     <x-doodle name="sparkle" class="absolute left-[18%] top-10 size-9 -rotate-12 text-ink max-sm:hidden" />
                     <x-doodle name="bubble-heart" class="absolute right-[14%] top-12 size-12 rotate-6 text-ink max-sm:hidden" />
-                    <x-doodle name="plane" class="mx-auto size-20 text-ink" />
+                    <x-doodle name="plane" class="mx-auto h-12 w-48 text-ink" />
                     <h2 class="mt-4 font-display text-2xl font-extrabold">Create your first form</h2>
                     <p class="mx-auto mt-2 max-w-sm text-sm text-muted">Start from a blank page or pick a template — either way, you'll be sharing a link in minutes.</p>
                     <div class="mt-6 flex items-center justify-center gap-2.5">

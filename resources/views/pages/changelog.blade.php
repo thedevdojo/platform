@@ -21,7 +21,7 @@ name('changelog.index');
 
     <section class="relative mx-auto max-w-3xl px-5 pb-24 pt-16 sm:pt-24">
         <x-doodle name="sparkle" class="reveal absolute -left-20 top-16 size-10 -rotate-12 text-ink max-lg:hidden" style="animation-delay: 500ms" />
-        <x-doodle name="plane" class="reveal absolute -right-32 top-24 size-20 text-ink max-lg:hidden" style="animation-delay: 600ms" />
+        <x-doodle name="plane" class="reveal absolute -right-48 top-24 h-11 w-44 -rotate-6 text-ink max-lg:hidden" style="animation-delay: 600ms" />
         <div class="text-center">
             <p class="reveal flex items-center justify-center gap-2 text-sm font-bold text-accent" style="animation-delay: 0ms">
                 <x-icon name="megaphone" class="size-4" /> Changelog

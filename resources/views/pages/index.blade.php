@@ -13,19 +13,19 @@ name('home');
         <div class="relative mx-auto max-w-6xl px-5 pb-12 pt-20 text-center sm:pt-28">
 
             {{-- Doodles --}}
-            <x-doodle name="sparkle" class="reveal absolute left-[16%] top-10 size-11 -rotate-12 text-ink max-lg:hidden" style="animation-delay: 600ms" />
-            <x-doodle name="plane" class="reveal absolute left-[4%] top-[58%] size-32 text-ink max-lg:hidden" style="animation-delay: 700ms" />
-            <x-doodle name="squiggle" class="reveal absolute left-[27%] top-[72%] size-12 text-accent max-lg:hidden" style="animation-delay: 800ms" />
-            <x-doodle name="bubble-heart" class="reveal absolute right-[7%] top-[44%] size-20 text-ink max-lg:hidden" style="animation-delay: 650ms" />
-            <x-doodle name="sparkle" class="reveal absolute right-[3%] top-[36%] size-9 rotate-[100deg] text-ink max-lg:hidden" style="animation-delay: 750ms" />
-            <x-doodle name="loop" class="reveal absolute bottom-6 right-[12%] size-12 text-ink max-lg:hidden" style="animation-delay: 850ms" />
+            <x-doodle name="sparkle" class="reveal absolute left-[12%] top-10 size-10 -rotate-12 text-ink max-lg:hidden" style="animation-delay: 600ms" />
+            <x-doodle name="plane" class="reveal absolute left-[3%] top-[66%] h-10 w-40 -rotate-12 text-ink max-lg:hidden" style="animation-delay: 700ms" />
+            <x-doodle name="squiggle" class="reveal absolute left-[22%] top-[74%] size-12 text-accent max-lg:hidden" style="animation-delay: 800ms" />
+            <x-doodle name="bubble-heart" class="reveal absolute right-[8%] top-[64%] size-20 text-ink max-lg:hidden" style="animation-delay: 650ms" />
+            <x-doodle name="sparkle" class="reveal absolute right-[3%] top-[59%] size-9 rotate-[100deg] text-ink max-lg:hidden" style="animation-delay: 750ms" />
+            <x-doodle name="loop" class="reveal absolute bottom-5 right-[3%] size-11 text-ink max-lg:hidden" style="animation-delay: 850ms" />
 
             <h1 class="reveal mx-auto max-w-4xl text-5xl font-extrabold leading-[1.04] tracking-tight sm:text-7xl" style="animation-delay: 60ms">
                 Forms that feel <span class="underline-squiggle">easy,</span><br>
                 results that matter.
             </h1>
 
-            <p class="reveal mx-auto mt-7 max-w-md text-lg leading-relaxed text-muted sm:text-xl" style="animation-delay: 160ms">
+            <p class="reveal mx-auto mt-8 max-w-lg text-lg leading-relaxed text-muted sm:text-xl" style="animation-delay: 160ms">
                 Create beautiful forms in minutes. No code, no hassle, just better responses.
             </p>
 
@@ -202,7 +202,8 @@ name('home');
                 </div>
 
                 {{-- Multiple choice demo --}}
-                <div class="card rounded-2xl border-line bg-canvas p-6" x-data="{ picked: null }">
+                <div class="card relative rounded-2xl border-line bg-canvas p-6" x-data="{ picked: null }">
+                    <x-doodle name="crown" class="absolute -right-3 -top-7 size-11 rotate-12 text-accent max-sm:hidden" />
                     <p class="text-sm font-bold">Pick your superpower</p>
                     <div class="mt-3 space-y-2">
                         @foreach (['Flight', 'Invisibility', 'Inbox zero'] as $i => $option)
@@ -228,7 +229,8 @@ name('home');
                 </div>
 
                 {{-- Checkboxes demo --}}
-                <div class="card rounded-2xl border-line bg-canvas p-6" x-data="{ checked: [] }">
+                <div class="card relative rounded-2xl border-line bg-canvas p-6" x-data="{ checked: [] }">
+                    <x-doodle name="pizza" class="absolute -bottom-8 -right-6 h-14 w-24 rotate-6 text-ink max-sm:hidden" />
                     <p class="text-sm font-bold">Toppings (choose any)</p>
                     <div class="mt-3 space-y-2">
                         @foreach (['Basil', 'Mushrooms', 'Pineapple — fight me'] as $i => $option)
@@ -255,7 +257,7 @@ name('home');
 
             {{-- Share card --}}
             <div class="card relative flex flex-col rounded-2xl p-8 sm:p-10" data-reveal>
-                <x-doodle name="plane" class="absolute -top-9 right-8 size-20 text-ink max-sm:hidden" />
+                <x-doodle name="plane" class="absolute -top-10 right-6 h-11 w-44 -rotate-6 text-ink max-sm:hidden" />
                 <p class="flex items-center gap-2 text-sm font-extrabold text-accent"><x-icon name="share" class="size-4" /> Share</p>
                 <h3 class="mt-3 text-3xl font-extrabold tracking-tight">One link. Anywhere.</h3>
                 <p class="mt-3 text-sm leading-relaxed text-muted">Publish and you get a clean link that works in a tweet, an email, a QR code or embedded right into your site.</p>
@@ -342,7 +344,7 @@ name('home');
     {{-- ============================== CTA BAND ============================== --}}
     <section class="bg-panel text-panel-fg">
         <div class="relative mx-auto max-w-6xl overflow-hidden px-5 py-24 text-center sm:py-32" data-reveal>
-            <x-doodle name="plane" class="absolute left-[6%] top-12 size-24 text-panel-muted max-lg:hidden" />
+            <x-doodle name="plane" class="absolute left-[4%] top-14 h-12 w-48 -rotate-6 text-panel-muted max-lg:hidden" />
             <x-doodle name="sparkle" class="absolute right-[10%] top-14 size-10 rotate-45 text-accent max-lg:hidden" />
             <x-doodle name="loop" class="absolute bottom-10 right-[6%] size-14 text-panel-muted max-lg:hidden" />
 
