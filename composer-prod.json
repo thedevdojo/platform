@@ -15,6 +15,10 @@
         },
         {
             "type": "vcs",
+            "url": "https://github.com/thedevdojo/accounts"
+        },
+        {
+            "type": "vcs",
             "url": "https://github.com/thedevdojo/auth"
         },
         {
@@ -29,13 +33,14 @@
             "type": "vcs",
             "url": "https://github.com/thedevdojo/changelog"
         },
+        ,
         {
             "type": "vcs",
-            "url": "https://github.com/thedevdojo/notifications"
+            "url": "https://github.com/thedevdojo/components"
         },
         {
             "type": "vcs",
-            "url": "https://github.com/thedevdojo/profiles"
+            "url": "https://github.com/thedevdojo/notifications"
         },
         {
             "type": "vcs",

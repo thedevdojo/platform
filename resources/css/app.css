@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@source '../../packages/devdojo/components/resources';
+@import './components.css';
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
